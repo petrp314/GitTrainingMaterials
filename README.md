@@ -1,54 +1,28 @@
-# GitTrainingMaterials
+# Git Training Materials
 
-Web-based training material that introduces **Git** to a technical audience: project managers, architects, and developers.
+A practical, visual introduction to Git for project managers, architects, and developers. The course is delivered as an accessible, responsive HTML slide deck; no build step or external assets are required.
 
-## Purpose
+## Start the course
 
-Give participants a shared, practical understanding of what Git is, why distributed version control matters, and how the everyday Git commands fit together — at a depth appropriate to each role.
+Open [`index.html`](index.html) in a modern browser, or publish the repository root with GitHub Pages. Use the on-screen arrows or the left/right arrow keys to navigate. The **Track** selector focuses the deck on PM, Architect, or Developer content. Use **Contents** to jump to a section, **Copy** buttons for commands, and browser print to save or print slides.
 
-## Audience
+## Course contents
 
-| Role | What they should take away |
-|------|----------------------------|
-| Project managers | Concepts and vocabulary, how Git supports collaboration, traceability and release management |
-| Architects | Branching/repository strategies, trade-offs of workflows, how Git fits into CI/CD and governance |
-| Developers | Hands-on command fluency for daily work, conflict resolution, and recovery from mistakes |
+The deck covers the eight modules in [SPECIFICATION.md](SPECIFICATION.md), with learning goals, visual explanations, examples, takeaways, and knowledge checks, plus a guided lab, command cheat sheet, glossary, FAQ, and further reading. Commands are intended for Git 2.40 or later and use modern `switch` and `restore` syntax.
 
-## Content Overview
+## Repository structure
 
-1. What is Git? (version control, distributed model, history of Git)
-2. Core concepts (repository, working tree, staging area, commit, branch, remote)
-3. Getting started (install, configure, `init`, `clone`)
-4. Everyday commands (`status`, `add`, `commit`, `push`, `pull`, `fetch`, ...)
-5. Branching and merging
-6. Collaboration workflows
-7. Undoing changes and recovery
-8. Best practices, plus cheat sheet, glossary and FAQ
-
-The full scope, learning objectives, page structure, and acceptance criteria are defined in [SPECIFICATION.md](SPECIFICATION.md).
-
-## Format
-
-Static HTML/CSS/JS pages (no backend required), deployable via GitHub Pages.
-
-## Repository Structure (planned)
-
-```
+```text
 /
+├── index.html       # Complete course slide deck
+├── assets/
+│   ├── deck.css     # Responsive, accessible presentation styles
+│   ├── deck.js      # Slide navigation, track filters, and copy controls
+│   └── favicon.svg  # Deck icon
 ├── README.md
-├── SPECIFICATION.md
-├── index.html          # landing page / table of contents
-├── pages/              # one page per module
-├── assets/             # css, js, images, diagrams
-└── examples/           # sample repos and exercises
+└── SPECIFICATION.md
 ```
 
 ## Contributing
 
-1. Create a branch from `main`.
-2. Follow the content and style requirements in `SPECIFICATION.md`.
-3. Open a pull request for review.
-
-## Status
-
-Specification phase — content not yet authored.
+Keep examples safe to run in a practice repository, use the role labels `[All]`, `[PM]`, `[Architect]`, and `[Dev]`, and retain keyboard navigation, reduced-motion support, and print styles when editing the deck.
