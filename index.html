@@ -26,6 +26,7 @@
     <a href="#welcome" data-slide="welcome">Welcome</a>
     <a href="#map" data-slide="map">Learning map</a>
     <a href="#m1" data-slide="m1">1 · What is Git?</a>
+    <a href="#remote-local" data-slide="remote-local">Local and remote repositories</a>
     <a href="#m2" data-slide="m2">2 · Core concepts</a>
     <a href="#m3" data-slide="m3">3 · Get started</a>
     <a href="#m4" data-slide="m4">4 · Everyday commands</a>
@@ -92,6 +93,50 @@
         <p class="diagram-caption">The hosting service is a convenient shared endpoint; Git itself is the version-control system.</p>
       </div>
       <div class="slide-footer"><span>Distributed does not mean “no central collaboration point”</span><span>Module 1</span></div>
+    </section>
+
+    <section class="slide" id="remote-local" data-title="Local and remote repositories" data-audience="all">
+      <div class="eyebrow">Module 1 · Sharing work</div>
+      <h2>Every clone has its own repository.</h2>
+      <p class="lead">A remote is another repository—often hosted online—that gives collaborators a shared place to exchange commits.</p>
+      <div class="repo-map" role="group" aria-label="Two local clones exchange commits with a shared remote repository">
+        <article class="repo-card">
+          <h3>Computer A</h3>
+          <span class="repo-location">Local clone</span>
+          <div class="working-tree">Working tree</div>
+          <div class="repo-history">
+            <strong>Local repository</strong>
+            <ol class="commit-stack"><li>Commit 3</li><li>Commit 2</li><li>Commit 1</li></ol>
+          </div>
+        </article>
+        <div class="sync-lane" aria-label="Computer A to remote">
+          <div class="sync-direction"><span aria-hidden="true">→</span><span>push commits</span></div>
+          <div class="sync-direction"><span aria-hidden="true">←</span><span>fetch / pull</span></div>
+        </div>
+        <article class="repo-card remote-repo">
+          <h3>Shared remote</h3>
+          <span class="repo-location">Hosted repository</span>
+          <div class="repo-history">
+            <strong>Remote repository</strong>
+            <ol class="commit-stack"><li>Commit 3</li><li>Commit 2</li><li>Commit 1</li></ol>
+          </div>
+        </article>
+        <div class="sync-lane" aria-label="Remote to computer B">
+          <div class="sync-direction"><span aria-hidden="true">←</span><span>push commits</span></div>
+          <div class="sync-direction"><span aria-hidden="true">→</span><span>fetch / pull</span></div>
+        </div>
+        <article class="repo-card">
+          <h3>Computer B</h3>
+          <span class="repo-location">Local clone</span>
+          <div class="working-tree">Working tree</div>
+          <div class="repo-history">
+            <strong>Local repository</strong>
+            <ol class="commit-stack"><li>Commit 3</li><li>Commit 2</li><li>Commit 1</li></ol>
+          </div>
+        </article>
+      </div>
+      <div class="callout good"><p><strong>Remember:</strong> push sends your commits; fetch downloads updates; pull fetches and integrates them. Git does not synchronize repositories automatically.</p></div>
+      <div class="slide-footer"><span>Each local clone has its own history</span><span>Module 1</span></div>
     </section>
 
     <section class="slide" data-title="Git in context" data-audience="all">
