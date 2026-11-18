@@ -3,10 +3,9 @@
   const currentLabel = document.querySelector("#current-slide");
   const totalLabel = document.querySelector("#slide-total");
   const progress = document.querySelector(".progress-bar");
-  const track = document.querySelector("#track");
   const contents = document.querySelector("#contents");
   const contentsButton = document.querySelector("#contents-toggle");
-  let visibleSlides = slides;
+  const visibleSlides = slides;
   let current = 0;
 
   const render = () => {
@@ -33,19 +32,8 @@
     render();
   };
 
-  const applyTrack = () => {
-    const selected = track.value;
-    visibleSlides = slides.filter(slide =>
-      selected === "all" || slide.dataset.audience.split(" ").includes("all") ||
-      slide.dataset.audience.split(" ").includes(selected)
-    );
-    current = 0;
-    render();
-  };
-
   document.querySelector("#previous").addEventListener("click", () => go(current - 1));
   document.querySelector("#next").addEventListener("click", () => go(current + 1));
-  track.addEventListener("change", applyTrack);
   contentsButton.addEventListener("click", () => {
     contents.hidden = !contents.hidden;
     contentsButton.setAttribute("aria-expanded", String(!contents.hidden));
@@ -90,5 +78,5 @@
       }
     });
   });
-  applyTrack();
+  render();
 })();

@@ -25,9 +25,9 @@ body {
     var(--page);
 }
 
-button, select { font: inherit; }
-button, select, a { color: inherit; }
-button:focus-visible, select:focus-visible, a:focus-visible, summary:focus-visible {
+button { font: inherit; }
+button, a { color: inherit; }
+button:focus-visible, a:focus-visible, summary:focus-visible {
   outline: 3px solid var(--accent);
   outline-offset: 3px;
 }
@@ -50,7 +50,7 @@ button:focus-visible, select:focus-visible, a:focus-visible, summary:focus-visib
 .brand { display: flex; align-items: center; gap: .75rem; font-weight: 800; letter-spacing: -.03em; }
 .brand-mark { display: grid; width: 2rem; height: 2rem; place-items: center; border-radius: .65rem; color: #172033; background: var(--accent); font-family: var(--mono); font-weight: 500; }
 .top-actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: .55rem; }
-.top-actions button, .top-actions select, .nav-button {
+.top-actions button, .nav-button {
   border: 1px solid var(--line);
   border-radius: .65rem;
   padding: .55rem .8rem;
@@ -59,9 +59,6 @@ button:focus-visible, select:focus-visible, a:focus-visible, summary:focus-visib
 }
 .top-actions button, .nav-button { cursor: pointer; }
 .top-actions button:hover, .nav-button:hover { border-color: var(--accent); }
-.track-control { display: flex; align-items: center; gap: .5rem; color: var(--muted); font-size: .82rem; }
-.track-control select { min-width: 7rem; }
-
 .progress-track { height: 3px; background: #ffffff10; }
 .progress-bar { height: 100%; width: 0; background: linear-gradient(90deg, var(--teal), var(--accent)); transition: width .25s ease; }
 
@@ -86,10 +83,6 @@ button:focus-visible, select:focus-visible, a:focus-visible, summary:focus-visib
 .slide[hidden] { display: none; }
 @keyframes rise { from { opacity: .35; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 .eyebrow { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; margin-bottom: 1rem; color: var(--teal); font-size: .76rem; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
-.role { display: inline-flex; align-items: center; border: 1px solid #62ddc355; border-radius: 99px; padding: .2rem .55rem; color: var(--teal); font-size: .7rem; letter-spacing: .03em; }
-.role.pm { border-color: #ffbd5955; color: var(--accent); }
-.role.arch { border-color: #8ebaff55; color: var(--blue); }
-.role.dev { border-color: #e6a3ff55; color: #e6a3ff; }
 h1, h2, h3, p { margin-top: 0; }
 h1 { max-width: 900px; margin-bottom: 1rem; font-size: clamp(2.4rem, 6vw, 5.4rem); line-height: .99; letter-spacing: -.065em; }
 h2 { margin-bottom: 1rem; font-size: clamp(1.8rem, 4vw, 3.4rem); line-height: 1.06; letter-spacing: -.05em; }
@@ -216,9 +209,7 @@ details p { margin: .55rem 0 0; font-size: .92rem; }
   .brand { margin-top: .35rem; }
   .brand-name { display: none; }
   .top-actions { gap: .4rem; }
-  .top-actions button, .top-actions select { padding: .48rem .6rem; font-size: .82rem; }
-  .track-control { gap: .3rem; font-size: 0; }
-  .track-control select { font-size: .8rem; }
+  .top-actions button { padding: .48rem .6rem; font-size: .82rem; }
   .deck { min-height: calc(100svh - 8rem); padding: .8rem; }
   .slide { min-height: 70svh; border-radius: 1rem; padding: 1.3rem; }
   .grid, .grid.three, .grid.four { grid-template-columns: 1fr; }

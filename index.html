@@ -14,14 +14,6 @@
   <header class="topbar">
     <div class="brand"><span class="brand-mark" aria-hidden="true">git</span><span class="brand-name">Git, clearly</span></div>
     <div class="top-actions">
-      <label class="track-control" for="track">Track
-        <select id="track" aria-label="Choose a role track">
-          <option value="all">Everyone</option>
-          <option value="pm">Project manager</option>
-          <option value="arch">Architect</option>
-          <option value="dev">Developer</option>
-        </select>
-      </label>
       <button id="contents-toggle" type="button" aria-expanded="false" aria-controls="contents">Contents</button>
     </div>
   </header>
@@ -50,17 +42,16 @@
   <main class="deck" id="deck">
     <section class="slide title-slide" id="welcome" data-title="Welcome" data-audience="all">
       <div class="title-mark" aria-hidden="true">git</div>
-      <div class="eyebrow">A visual field guide <span class="role">[All]</span></div>
+      <div class="eyebrow">A visual field guide</div>
       <h1>Git, <span class="accent">clearly.</span></h1>
       <p class="lead">A practical, visual introduction to version control: from your first commit to confident collaboration and recovery.</p>
       <div class="title-meta">
-        <span class="role pm">Project managers</span><span class="role arch">Architects</span><span class="role dev">Developers</span>
       </div>
-      <div class="slide-footer"><span>Git 2.40+ · no prior experience assumed</span><span>Navigate with ← → or the controls</span></div>
+      <div class="slide-footer"><span></span></div>
     </section>
 
     <section class="slide" id="map" data-title="Learning map" data-audience="all">
-      <div class="eyebrow">Start here <span class="role">[All]</span></div>
+      <div class="eyebrow">Start here</div>
       <h2>One tool. Three useful perspectives.</h2>
       <p class="lead">Git records change as a history you can inspect, share, branch, and recover.</p>
       <div class="grid three">
@@ -69,23 +60,11 @@
         <article class="card"><h3 class="teal">Developer · Build fluency</h3><p>Inspect, stage, commit, synchronize, resolve conflicts, and recover safely in a practice repository.</p></article>
       </div>
       <div class="callout good"><p><strong>Learning goals:</strong> explain distributed version control, navigate Git's data model, use everyday commands, and choose a collaboration workflow for its trade-offs.</p></div>
-      <div class="slide-footer"><span>Course map</span><span>Use the Track selector to focus the deck</span></div>
-    </section>
-
-    <section class="slide" id="how" data-title="How to use this deck" data-audience="all">
-      <div class="eyebrow">A quick orientation <span class="role">[All]</span></div>
-      <h2>Learn the picture, then try the command.</h2>
-      <div class="grid">
-        <article class="card"><h3>Follow the flow</h3><p>Each module introduces a model, shows the action it explains, and ends with a quick knowledge check.</p></article>
-        <article class="card"><h3>Choose your depth</h3><p>Role badges identify relevant content. The track selector hides slides outside a selected role.</p></article>
-        <article class="card"><h3>Practice safely</h3><p>Use a disposable local repository for exercises. Examples that discard or rewrite work are clearly called out.</p></article>
-        <article class="card"><h3>Navigate accessibly</h3><p>Use arrow keys, Page Up/Down, Home/End, or the buttons. Print from the browser for one slide per page.</p></article>
-      </div>
-      <div class="slide-footer"><span>Before you begin</span><span>Commands use a terminal; examples work across operating systems</span></div>
+      <div class="slide-footer"><span>Course map</span><span>Full deck · all roles</span></div>
     </section>
 
     <section class="slide" id="m1" data-title="1 · What is Git?" data-audience="all">
-      <div class="eyebrow">Module 1 · What is Git? <span class="role">[All]</span></div>
+      <div class="eyebrow">Module 1 · What is Git?</div>
       <h2>Version control makes change legible.</h2>
       <p class="lead">Without version control, teams trade files and hope filenames tell the story. Git keeps a durable, inspectable history of project snapshots.</p>
       <div class="grid three">
@@ -98,7 +77,7 @@
     </section>
 
     <section class="slide" data-title="Centralized and distributed" data-audience="all">
-      <div class="eyebrow">Module 1 · Two models <span class="role">[All]</span></div>
+      <div class="eyebrow">Module 1 · Two models</div>
       <h2>Git is distributed: every clone has a repository.</h2>
       <div class="grid">
         <article class="card"><h3>Centralized model · SVN, CVS</h3><p>Clients check out working files from a central server. The server is the main source of history; network access is commonly needed to commit shared changes.</p></article>
@@ -116,7 +95,7 @@
     </section>
 
     <section class="slide" data-title="Git in context" data-audience="all">
-      <div class="eyebrow">Module 1 · What Git is—and isn't <span class="role">[All]</span></div>
+      <div class="eyebrow">Module 1 · What Git is—and isn't</div>
       <h2>Git stores history. Platforms help teams use it.</h2>
       <div class="grid">
         <article class="card"><h3>Git provides</h3><ul><li>Local history and branching</li><li>Content integrity checked with object hashes</li><li>Tools to compare, combine, and share work</li></ul></article>
@@ -126,17 +105,8 @@
       <div class="slide-footer"><span>Key takeaway · Git is the tool; a host is a service</span><span>Module 1</span></div>
     </section>
 
-    <section class="slide" data-title="Module 1 knowledge check" data-audience="all">
-      <div class="eyebrow">Module 1 · Check your understanding <span class="role">[All]</span></div>
-      <h2>What would you explain to a teammate?</h2>
-      <ol class="steps"><li>What problem does version control solve beyond sharing the latest file?</li><li>What can you do locally in Git without a network connection?</li><li>How is Git different from GitHub?</li></ol>
-      <details><summary>Reveal suggested answers</summary><p>It records inspectable history and supports parallel collaboration and recovery. Local commits, comparisons, and branch operations are available offline. Git is the version-control system; GitHub is one platform that hosts repositories and adds collaboration tools.</p></details>
-      <div class="callout good"><p><strong>Takeaway:</strong> every clone is a full repository; you choose when and where to share its commits.</p></div>
-      <div class="slide-footer"><span>Module 1 complete</span><span>Next · the Git data model</span></div>
-    </section>
-
     <section class="slide" id="m2" data-title="2 · Core concepts" data-audience="all">
-      <div class="eyebrow">Module 2 · Core concepts <span class="role">[All]</span></div>
+      <div class="eyebrow">Module 2 · Core concepts</div>
       <h2>Three areas take a change from edit to shared.</h2>
       <div class="diagram" role="img" aria-label="Changes flow from the working tree to the staging area, then into the local repository as a commit, and can be pushed to a remote repository.">
         <div class="node"><strong>Working tree</strong><span>edit files</span></div><span class="arrow" aria-hidden="true">→</span>
@@ -154,7 +124,7 @@
     </section>
 
     <section class="slide" data-title="Commits and branches" data-audience="all">
-      <div class="eyebrow">Module 2 · History is a graph <span class="role">[All]</span></div>
+      <div class="eyebrow">Module 2 · History is a graph</div>
       <h2>A branch is a lightweight name for a line of work.</h2>
       <svg class="graph" viewBox="0 0 760 250" role="img" aria-labelledby="graph-title graph-desc">
         <title id="graph-title">A commit graph with a feature branch</title>
@@ -174,7 +144,7 @@
     </section>
 
     <section class="slide" data-title="Repository objects and vocabulary" data-audience="all">
-      <div class="eyebrow">Module 2 · Names for the pieces <span class="role">[All]</span></div>
+      <div class="eyebrow">Module 2 · Names for the pieces</div>
       <h2>Small objects combine into a project snapshot.</h2>
       <div class="grid three">
         <article class="card"><h3>Blob</h3><p>Stores file contents. Git identifies objects by a content-derived hash.</p></article>
@@ -190,17 +160,8 @@
       <div class="slide-footer"><span>Takeaway · commits point to content snapshots, not just file-by-file patches</span><span>Module 2</span></div>
     </section>
 
-    <section class="slide" data-title="Module 2 knowledge check" data-audience="all">
-      <div class="eyebrow">Module 2 · Check your understanding <span class="role">[All]</span></div>
-      <h2>Can you trace a change through Git?</h2>
-      <ol class="steps"><li>Where do edits live before they are committed?</li><li>What is the staging area for?</li><li>What does a branch name point to?</li></ol>
-      <details><summary>Reveal suggested answers</summary><p>Edits are in the working tree. The index selects the content for the next snapshot. A branch is a movable reference to a commit; Git history links commits through their parents.</p></details>
-      <div class="callout good"><p><strong>Takeaway:</strong> working tree → index → local commit → remote repository.</p></div>
-      <div class="slide-footer"><span>Module 2 complete</span><span>Next · set up a safe workspace</span></div>
-    </section>
-
     <section class="slide" id="m3" data-title="3 · Get started" data-audience="dev all">
-      <div class="eyebrow">Module 3 · Get started <span class="role dev">[Dev]</span> <span class="role">[All]</span></div>
+      <div class="eyebrow">Module 3 · Get started</div>
       <h2>Set your identity, then create or copy a repository.</h2>
       <p>Install Git from your operating system's package manager or the official Git downloads. Verify the installed version, then set the name and email that will appear on your commits.</p>
       <div class="command"><pre>git --version
@@ -217,7 +178,7 @@ cd &lt;repository-name&gt;</pre><button class="copy" type="button" aria-label="C
     </section>
 
     <section class="slide" data-title="Ignore, line endings, and authentication" data-audience="dev arch">
-      <div class="eyebrow">Module 3 · Repository setup <span class="role dev">[Dev]</span> <span class="role arch">[Architect]</span></div>
+      <div class="eyebrow">Module 3 · Repository setup</div>
       <h2>Keep generated files, platform differences, and credentials intentional.</h2>
       <div class="grid three">
         <article class="card"><h3><code>.gitignore</code></h3><p>Lists untracked paths Git should ignore, such as build output and local secrets. It does <strong>not</strong> untrack files already committed.</p></article>
@@ -228,16 +189,8 @@ cd &lt;repository-name&gt;</pre><button class="copy" type="button" aria-label="C
       <div class="slide-footer"><span>Tip · review ignore patterns before the first commit</span><span>Module 3</span></div>
     </section>
 
-    <section class="slide" data-title="Module 3 knowledge check" data-audience="dev">
-      <div class="eyebrow">Module 3 · Check your understanding <span class="role dev">[Dev]</span></div>
-      <h2>Ready to make a clean first commit?</h2>
-      <ol class="steps"><li>What does <code>git clone</code> create locally?</li><li>Why is adding a secret to <code>.gitignore</code> not enough if it is already tracked?</li><li>What information does <code>user.email</code> configure?</li></ol>
-      <details><summary>Reveal suggested answers</summary><p>A clone creates a local repository with working files and remote configuration. Ignore rules don't remove already tracked content or erase old commits. <code>user.email</code> is commit metadata; it is not your login credential.</p></details>
-      <div class="slide-footer"><span>Module 3 complete</span><span>Next · everyday command toolkit</span></div>
-    </section>
-
     <section class="slide" id="m4" data-title="4 · Everyday commands" data-audience="dev all">
-      <div class="eyebrow">Module 4 · Everyday commands <span class="role dev">[Dev]</span> <span class="role">[All]</span></div>
+      <div class="eyebrow">Module 4 · Everyday commands</div>
       <h2>First inspect. Then select what to record.</h2>
       <div class="grid">
         <article class="card"><h3><code>git status</code> · inspect state</h3><p><strong>Purpose:</strong> summarize current branch and staged, unstaged, and untracked changes.</p><p><strong>Syntax:</strong> <code>git status [--short]</code></p><p><strong>Example:</strong> reports <code>modified: README.md</code> as unstaged. <code>--short</code> is compact.</p><p><strong>Pitfall:</strong> it summarizes; it does not show the actual diff.</p></article>
@@ -257,7 +210,7 @@ $ git diff --stat
     </section>
 
     <section class="slide" data-title="Stage a deliberate snapshot" data-audience="dev">
-      <div class="eyebrow">Module 4 · Stage changes <span class="role dev">[Dev]</span></div>
+      <div class="eyebrow">Module 4 · Stage changes</div>
       <h2><code>git add</code> chooses content for the next commit.</h2>
       <div class="grid">
         <article class="card"><h3>Purpose and syntax</h3><p>Add selected file contents from the working tree to the index.</p><div class="command"><pre>git add README.md
@@ -276,7 +229,7 @@ M  README.md</pre><button class="copy" type="button" aria-label="Copy example st
     </section>
 
     <section class="slide" data-title="Commit small, clear changes" data-audience="dev all">
-      <div class="eyebrow">Module 4 · Commit <span class="role dev">[Dev]</span> <span class="role">[All]</span></div>
+      <div class="eyebrow">Module 4 · Commit</div>
       <h2>A commit is a named checkpoint with a message.</h2>
       <div class="grid">
         <article class="card"><h3>Purpose and syntax</h3><p>Record the staged snapshot in local history.</p><div class="command"><pre>git commit -m "Document setup steps"</pre><button class="copy" type="button" aria-label="Copy commit command">Copy</button></div><p><code>-m</code> supplies a one-line message; without it, Git opens the configured editor.</p></article>
@@ -294,7 +247,7 @@ M  README.md</pre><button class="copy" type="button" aria-label="Copy example st
     </section>
 
     <section class="slide" data-title="Read the history" data-audience="dev all">
-      <div class="eyebrow">Module 4 · Inspect history <span class="role dev">[Dev]</span> <span class="role">[All]</span></div>
+      <div class="eyebrow">Module 4 · Inspect history</div>
       <h2>History answers “what changed?” and “why?”</h2>
       <div class="grid">
         <article class="card"><h3><code>git log</code> · browse commits</h3><p><strong>Purpose:</strong> view commit history.</p><p><strong>Syntax:</strong> <code>git log [--oneline --graph --decorate]</code></p><p><strong>Example:</strong> <code>git log --oneline --graph</code> gives a compact graph.</p><p><strong>Pitfall:</strong> history follows the current branch unless options or refs broaden it.</p></article>
@@ -312,7 +265,7 @@ M  README.md</pre><button class="copy" type="button" aria-label="Copy example st
     </section>
 
     <section class="slide" data-title="Remotes and synchronization" data-audience="dev all">
-      <div class="eyebrow">Module 4 · Share and receive commits <span class="role dev">[Dev]</span> <span class="role">[All]</span></div>
+      <div class="eyebrow">Module 4 · Share and receive commits</div>
       <h2>Fetch previews. Pull integrates. Push publishes.</h2>
       <div class="grid">
         <article class="card"><h3><code>git remote</code> · name a repository</h3><p><strong>Purpose:</strong> list or manage remote names and URLs.</p><p><strong>Syntax:</strong> <code>git remote -v</code>; <code>git remote add &lt;name&gt; &lt;url&gt;</code>.</p><p><strong>Example:</strong> <code>origin</code> is the conventional clone remote.</p><p><strong>Pitfall:</strong> a remote is configuration, not a second working directory.</p></article>
@@ -340,7 +293,7 @@ branch 'feature/docs' set up to track 'origin/feature/docs'.</pre><button class=
     </section>
 
     <section class="slide" data-title="Branches, merge, and rebase" data-audience="dev arch">
-      <div class="eyebrow">Module 4 · Parallel work <span class="role dev">[Dev]</span> <span class="role arch">[Architect]</span></div>
+      <div class="eyebrow">Module 4 · Parallel work</div>
       <h2>Branch to isolate work; merge to integrate it.</h2>
       <div class="grid">
         <article class="card"><h3><code>git branch</code> · list or create</h3><p><strong>Syntax:</strong> <code>git branch [--all]</code>; <code>git branch &lt;name&gt;</code>. Use <code>-d</code> to delete a merged local branch.</p><p><strong>Pitfall:</strong> creating a branch does not switch to it. Do not delete unmerged work casually.</p></article>
@@ -362,7 +315,7 @@ Successfully rebased and updated refs/heads/feature/search.</pre><button class="
     </section>
 
     <section class="slide" data-title="Stash and tags" data-audience="dev">
-      <div class="eyebrow">Module 4 · Shelve and label <span class="role dev">[Dev]</span></div>
+      <div class="eyebrow">Module 4 · Shelve and label</div>
       <h2>Stash temporary edits. Tag meaningful milestones.</h2>
       <div class="grid">
         <article class="card"><h3><code>git stash</code> · shelve work in progress</h3><p><strong>Syntax:</strong> <code>git stash push -m "message"</code>; <code>git stash list</code>; <code>git stash pop</code>.</p><p><strong>Example:</strong> stash edits to switch context, then apply them later.</p><p><strong>Options:</strong> <code>-u</code> includes untracked files. <code>apply</code> keeps the stash; <code>pop</code> applies and removes it if successful.</p><p><strong>Pitfall:</strong> stashes are local and easy to forget; commit durable work instead.</p></article>
@@ -375,17 +328,8 @@ v1.2.0</pre><button class="copy" type="button" aria-label="Copy example stash an
       <div class="slide-footer"><span>All command examples in this module are safe in a practice repository</span><span>Module 4</span></div>
     </section>
 
-    <section class="slide" data-title="Module 4 knowledge check" data-audience="dev">
-      <div class="eyebrow">Module 4 · Check your understanding <span class="role dev">[Dev]</span></div>
-      <h2>Choose the next command with intent.</h2>
-      <ol class="steps"><li>You staged a file. Which diff shows exactly what will be committed?</li><li>How do you download teammate commits without integrating them yet?</li><li>What is the important difference between <code>git fetch</code> and <code>git pull</code>?</li><li>When is rebasing shared commits a problem?</li></ol>
-      <details><summary>Reveal suggested answers</summary><p>Use <code>git diff --staged</code>. Use <code>git fetch</code> to download without integrating. Pull fetches and then integrates by merge or rebase. Rewriting commits others depend on forces history divergence and can disrupt their work.</p></details>
-      <div class="callout good"><p><strong>Takeaway:</strong> status → diff → add → review staged diff → commit → fetch/pull/push deliberately.</p></div>
-      <div class="slide-footer"><span>Module 4 complete</span><span>Next · branch and merge together</span></div>
-    </section>
-
     <section class="slide" id="m5" data-title="5 · Branch and merge" data-audience="all">
-      <div class="eyebrow">Module 5 · Branching and merging <span class="role">[All]</span></div>
+      <div class="eyebrow">Module 5 · Branching and merging</div>
       <h2>Branches let teams work in parallel without duplicating a project.</h2>
       <p class="lead">A branch begins as a movable name at a commit. Git reuses shared history; the branch costs little and makes an isolated line of work easy to discuss.</p>
       <div class="diagram" role="img" aria-label="Main and feature branch share an ancestor. The feature branch advances independently, then its history is integrated into main.">
@@ -401,7 +345,7 @@ v1.2.0</pre><button class="copy" type="button" aria-label="Copy example stash an
     </section>
 
     <section class="slide" data-title="Merge conflicts" data-audience="all">
-      <div class="eyebrow">Module 5 · Conflicts are a decision, not a failure <span class="role">[All]</span></div>
+      <div class="eyebrow">Module 5 · Conflicts are a decision, not a failure</div>
       <h2>A conflict means Git needs a human to choose the combined result.</h2>
       <p>Conflicts commonly occur when both histories change overlapping lines, or when one renames/deletes a file another changes. Git pauses integration so a person can create the intended result.</p>
       <div class="grid">
@@ -417,7 +361,7 @@ incoming version
     </section>
 
     <section class="slide" data-title="Review and integrate" data-audience="all arch">
-      <div class="eyebrow">Module 5 · Review before integration <span class="role">[All]</span> <span class="role arch">[Architect]</span></div>
+      <div class="eyebrow">Module 5 · Review before integration</div>
       <h2>Pull / merge requests make integration visible.</h2>
       <div class="grid three">
         <article class="card"><h3>Propose</h3><p>Describe the change, link its context, and show what branch should receive it.</p></article>
@@ -433,16 +377,8 @@ incoming version
       <div class="slide-footer"><span>Method names and exact behavior vary by hosting platform</span><span>Module 5</span></div>
     </section>
 
-    <section class="slide" data-title="Module 5 knowledge check" data-audience="all">
-      <div class="eyebrow">Module 5 · Check your understanding <span class="role">[All]</span></div>
-      <h2>What is the team deciding when a conflict appears?</h2>
-      <ol class="steps"><li>Why does Git stop instead of automatically picking one conflicted version?</li><li>Name two good habits that reduce painful integration.</li><li>What should be checked before merging a reviewed change?</li></ol>
-      <details><summary>Reveal suggested answers</summary><p>Git cannot infer the intended combined behavior. Keep branches focused and short-lived; integrate often. Review the diff, test results, approvals, and required policy checks.</p></details>
-      <div class="slide-footer"><span>Module 5 complete</span><span>Next · choose a team workflow</span></div>
-    </section>
-
     <section class="slide" id="m6" data-title="6 · Team workflows" data-audience="pm arch">
-      <div class="eyebrow">Module 6 · Collaboration workflows <span class="role pm">[PM]</span> <span class="role arch">[Architect]</span></div>
+      <div class="eyebrow">Module 6 · Collaboration workflows</div>
       <h2>The right workflow follows the way you release.</h2>
       <p class="lead">There is no universally best branching model. Optimize for how often you integrate, how releases are cut, and how much coordination your team can sustain.</p>
       <div class="table-wrap"><table><thead><tr><th>Workflow</th><th>Typical shape</th><th>Good fit</th><th>Trade-off</th></tr></thead><tbody>
@@ -455,23 +391,8 @@ incoming version
       <div class="slide-footer"><span>Learning objective · compare workflows against team constraints</span><span>Module 6</span></div>
     </section>
 
-    <section class="slide" data-title="Choose a workflow" data-audience="pm arch">
-      <div class="eyebrow">Module 6 · Make trade-offs explicit <span class="role pm">[PM]</span> <span class="role arch">[Architect]</span></div>
-      <h2>Ask what must be true for the workflow to succeed.</h2>
-      <div class="grid three">
-        <article class="card"><h3>Release cadence</h3><p>Weekly releases may favor a lighter flow than several supported release lines.</p></article>
-        <article class="card"><h3>Team size &amp; ownership</h3><p>Clear reviewers, component ownership, and merge responsibility matter as teams grow.</p></article>
-        <article class="card"><h3>Feedback speed</h3><p>Short branches depend on trustworthy tests and quick CI feedback.</p></article>
-        <article class="card"><h3>Risk &amp; compliance</h3><p>Audit evidence, approvals, signed artifacts, and access controls may be mandatory.</p></article>
-        <article class="card"><h3>Deployment strategy</h3><p>Feature flags and backward-compatible changes help separate deployment from release.</p></article>
-        <article class="card"><h3>Support obligations</h3><p>Multiple maintained versions need an explicit patch and release policy.</p></article>
-      </div>
-      <div class="callout"><p><strong>Scenario:</strong> a 40-person team releases weekly. Start by testing short-lived reviewed branches or trunk-based development against CI speed, ownership boundaries, and release risk—not by adopting Gitflow by default.</p></div>
-      <div class="slide-footer"><span>Pick the simplest workflow the constraints can support</span><span>Module 6</span></div>
-    </section>
-
     <section class="slide" data-title="Repository layout and governance" data-audience="arch">
-      <div class="eyebrow">Module 6 · Architecture and governance <span class="role arch">[Architect]</span></div>
+      <div class="eyebrow">Module 6 · Architecture and governance</div>
       <h2>Monorepo or multi-repo is an ownership and tooling decision.</h2>
       <div class="grid">
         <article class="card"><h3>Monorepo</h3><p><strong>Benefits:</strong> atomic cross-project changes, shared tooling, discoverable code.</p><p><strong>Costs:</strong> scaling CI and permissions, repository-wide conventions, large checkout history.</p></article>
@@ -486,7 +407,7 @@ incoming version
     </section>
 
     <section class="slide" data-title="CI, releases, and versioning" data-audience="pm arch">
-      <div class="eyebrow">Module 6 · From commit to release <span class="role pm">[PM]</span> <span class="role arch">[Architect]</span></div>
+      <div class="eyebrow">Module 6 · From commit to release</div>
       <h2>A release pipeline connects reviewed source to a traceable artifact.</h2>
       <div class="diagram" role="img" aria-label="Issue and change are reviewed, CI builds and tests a commit, a version tag marks a release, and an artifact is published.">
         <div class="node"><strong>Issue / change</strong><span>intent</span></div><span class="arrow" aria-hidden="true">→</span><div class="node"><strong>Commit &amp; review</strong><span>source history</span></div><span class="arrow" aria-hidden="true">→</span><div class="node"><strong>CI checks</strong><span>build + test</span></div><span class="arrow" aria-hidden="true">→</span><div class="node"><strong>Tag + artifact</strong><span>release</span></div>
@@ -499,16 +420,8 @@ incoming version
       <div class="slide-footer"><span>Key takeaway · traceability is a designed workflow</span><span>Module 6</span></div>
     </section>
 
-    <section class="slide" data-title="Module 6 knowledge check" data-audience="pm arch">
-      <div class="eyebrow">Module 6 · Check your understanding <span class="role pm">[PM]</span> <span class="role arch">[Architect]</span></div>
-      <h2>Can you defend a workflow choice?</h2>
-      <ol class="steps"><li>What team capabilities does trunk-based development rely on?</li><li>Give one reason to choose a monorepo and one reason to choose multiple repositories.</li><li>Where do branch protections and automated checks reduce risk?</li></ol>
-      <details><summary>Reveal suggested answers</summary><p>Frequent small integration, fast reliable CI, and disciplined release practices. Monorepos simplify atomic cross-project work; multi-repos support independent ownership/access/release. Branch controls and checks prevent unreviewed or failing changes from becoming shared release input.</p></details>
-      <div class="slide-footer"><span>Module 6 complete</span><span>Next · undo the right thing safely</span></div>
-    </section>
-
     <section class="slide" id="m7" data-title="7 · Undo and recover" data-audience="dev">
-      <div class="eyebrow">Module 7 · Undo and recovery <span class="role dev">[Dev]</span></div>
+      <div class="eyebrow">Module 7 · Undo and recovery</div>
       <h2>Choose an undo command by where the change lives.</h2>
       <div class="table-wrap"><table><thead><tr><th>Situation</th><th>Command</th><th>Effect</th></tr></thead><tbody>
         <tr><td>Discard unstaged edits in a path</td><td><code>git restore &lt;path&gt;</code></td><td>Replaces working-tree file from the index. Discards those edits.</td></tr>
@@ -521,7 +434,7 @@ incoming version
     </section>
 
     <section class="slide" data-title="Reset: move a branch, change the index" data-audience="dev">
-      <div class="eyebrow">Module 7 · Reset carefully <span class="role dev">[Dev]</span></div>
+      <div class="eyebrow">Module 7 · Reset carefully</div>
       <h2><code>git reset</code> moves the current branch to a chosen commit.</h2>
       <div class="table-wrap"><table><thead><tr><th>Mode</th><th>Branch / HEAD</th><th>Index</th><th>Working tree</th><th>Use case</th></tr></thead><tbody>
         <tr><td><code>--soft</code></td><td>Moves</td><td>Kept</td><td>Kept</td><td>Redo the commit while retaining staged changes</td></tr>
@@ -534,28 +447,8 @@ git reset --mixed HEAD~1</pre><button class="copy" type="button" aria-label="Cop
       <div class="slide-footer"><span>Before resetting: inspect status, ensure work is saved, confirm the target</span><span>Module 7</span></div>
     </section>
 
-    <section class="slide" data-title="Recovery with reflog" data-audience="dev">
-      <div class="eyebrow">Module 7 · Recover a moved reference <span class="role dev">[Dev]</span></div>
-      <h2>The reflog records where local references pointed.</h2>
-      <div class="grid">
-        <article class="card"><h3>Find a prior position</h3><div class="command"><pre>git reflog
-git show HEAD@{1}</pre><button class="copy" type="button" aria-label="Copy reflog recovery commands">Copy</button></div><p>Reflog entries help locate recently moved branch tips and commits that are no longer easy to reach.</p></article>
-        <article class="card"><h3>Recover without rushing</h3><p>Inspect the candidate commit. Create a rescue branch before doing more work:</p><div class="command"><pre>git branch rescue/recovered HEAD@{1}</pre><button class="copy" type="button" aria-label="Copy recovery branch command">Copy</button></div><p>Reflogs are local and expire over time; they cannot restore uncommitted edits that were discarded.</p></article>
-      </div>
-      <div class="callout good"><p><strong>Decision guide:</strong> shared commit to undo → <code>revert</code>; local commit to reshape → consider <code>reset</code> or <code>amend</code>; lost branch tip → inspect <code>reflog</code>; uncommitted file edit → inspect diff before <code>restore</code>.</p></div>
-      <div class="slide-footer"><span>Recovery works best when you stop, inspect, and make a rescue reference</span><span>Module 7</span></div>
-    </section>
-
-    <section class="slide" data-title="Module 7 knowledge check" data-audience="dev">
-      <div class="eyebrow">Module 7 · Check your understanding <span class="role dev">[Dev]</span></div>
-      <h2>What is the safest undo for each case?</h2>
-      <ol class="steps"><li>A commit is already shared and needs to be undone.</li><li>You want to unstage a file but keep your edits.</li><li>You accidentally moved a local branch pointer. Where do you look?</li></ol>
-      <details><summary>Reveal suggested answers</summary><p>Use <code>git revert</code> to add an inverse commit. Use <code>git restore --staged &lt;path&gt;</code> to unstage while preserving working-tree edits. Inspect <code>git reflog</code> for the previous local reference position.</p></details>
-      <div class="slide-footer"><span>Module 7 complete</span><span>Next · habits that protect the team</span></div>
-    </section>
-
     <section class="slide" id="m8" data-title="8 · Good habits" data-audience="all">
-      <div class="eyebrow">Module 8 · Best practices <span class="role">[All]</span></div>
+      <div class="eyebrow">Module 8 · Best practices</div>
       <h2>Make history useful to the next person.</h2>
       <div class="grid three">
         <article class="card"><h3>Commit often</h3><p>Small, atomic changes are easier to explain, review, test, and revert.</p></article>
@@ -569,7 +462,7 @@ git show HEAD@{1}</pre><button class="copy" type="button" aria-label="Copy reflo
     </section>
 
     <section class="slide" data-title="Protect secrets and large files" data-audience="dev arch">
-      <div class="eyebrow">Module 8 · Protect what you share <span class="role dev">[Dev]</span> <span class="role arch">[Architect]</span></div>
+      <div class="eyebrow">Module 8 · Protect what you share</div>
       <h2>Prevention is simpler than cleaning a published history.</h2>
       <div class="grid">
         <article class="card"><h3>Never commit secrets</h3><p>Store credentials in approved secret managers. If exposed, revoke or rotate immediately—even if the commit is later removed.</p><p>Enable platform secret scanning and review access to affected systems.</p></article>
@@ -583,16 +476,8 @@ git show HEAD@{1}</pre><button class="copy" type="button" aria-label="Copy reflo
       <div class="slide-footer"><span>Security is both repository policy and team practice</span><span>Module 8</span></div>
     </section>
 
-    <section class="slide" data-title="Module 8 knowledge check" data-audience="all">
-      <div class="eyebrow">Module 8 · Check your understanding <span class="role">[All]</span></div>
-      <h2>What small practices pay off at team scale?</h2>
-      <ol class="steps"><li>Why are small atomic commits easier to review?</li><li>A secret is accidentally pushed. What is the first action?</li><li>When might Git LFS be appropriate?</li></ol>
-      <details><summary>Reveal suggested answers</summary><p>They make intent and impact easier to understand, test, and undo. Revoke or rotate the exposed credential immediately, then follow incident response and history cleanup procedures. Git LFS may suit large binary assets that change often, provided storage and access requirements are understood.</p></details>
-      <div class="slide-footer"><span>Module 8 complete</span><span>Next · put it together in a local lab</span></div>
-    </section>
-
     <section class="slide" id="lab" data-title="Developer lab · Make a repository" data-audience="dev">
-      <div class="eyebrow">Guided developer lab · Part 1 <span class="role dev">[Dev]</span></div>
+      <div class="eyebrow">Guided developer lab · Part 1</div>
       <h2>Build a small repository and record a change.</h2>
       <p>Run these steps in a new, disposable directory. Git identity must already be configured. Commands below work in Git Bash, macOS Terminal, or a Linux shell.</p>
       <div class="command"><pre>mkdir git-practice && cd git-practice
@@ -609,7 +494,7 @@ git log --oneline</pre><button class="copy" type="button" aria-label="Copy first
     </section>
 
     <section class="slide" data-title="Developer lab · Branch and merge" data-audience="dev">
-      <div class="eyebrow">Guided developer lab · Part 2 <span class="role dev">[Dev]</span></div>
+      <div class="eyebrow">Guided developer lab · Part 2</div>
       <h2>Make parallel changes, then integrate them.</h2>
       <div class="command"><pre>git switch -c feature/add-route
 printf "\nRoute: Pine Loop\n" &gt;&gt; README.md
@@ -626,24 +511,8 @@ git log --oneline --graph --decorate</pre><button class="copy" type="button" ari
       <div class="slide-footer"><span>Lab checkpoint 2 · focused branch integrated</span><span>Module 5</span></div>
     </section>
 
-    <section class="slide" data-title="Developer lab · Conflict and recovery" data-audience="dev">
-      <div class="eyebrow">Guided developer lab · Part 3 <span class="role dev">[Dev]</span></div>
-      <h2>Create a conflict on purpose—and resolve it calmly.</h2>
-      <div class="command"><pre>git switch -c feature/change-route
-printf "Route: Cedar Ridge\n" &gt; route.txt
-git add route.txt && git commit -m "Set Cedar Ridge route"
-git switch main
-printf "Route: Lake Path\n" &gt; route.txt
-git add route.txt && git commit -m "Set Lake Path route"
-git merge feature/change-route
-git status</pre><button class="copy" type="button" aria-label="Copy conflict lab setup commands">Copy</button></div>
-      <ol class="steps"><li>Open <code>route.txt</code> and choose an intentional final route; remove all conflict markers.</li><li>Stage the resolved file and complete the merge with <code>git add route.txt</code>, then <code>git commit</code>.</li><li>Inspect the graph with <code>git log --oneline --graph --all</code>.</li><li>Try <code>git reflog</code> to see local branch movements.</li></ol>
-      <div class="callout warning"><p>This exercise changes only files in <code>git-practice</code>. Never experiment with reset, restore, or conflict commands in a repository containing work you care about.</p></div>
-      <div class="slide-footer"><span>Lab complete · inspect, decide, resolve, verify</span><span>Module 5 + 7</span></div>
-    </section>
-
     <section class="slide" id="cheat" data-title="Command cheat sheet" data-audience="dev">
-      <div class="eyebrow">Reference · One-screen command sheet <span class="role dev">[Dev]</span></div>
+      <div class="eyebrow">Reference · One-screen command sheet</div>
       <h2>Daily Git, at a glance.</h2>
       <div class="table-wrap"><table><thead><tr><th>Goal</th><th>Command</th><th>Reminder</th></tr></thead><tbody>
         <tr><td>Inspect state / working diff / staged diff</td><td><code>git status</code><br><code>git diff</code><br><code>git diff --staged</code></td><td>Review staged content before committing</td></tr>
@@ -658,7 +527,7 @@ git status</pre><button class="copy" type="button" aria-label="Copy conflict lab
     </section>
 
     <section class="slide" id="glossary" data-title="Glossary" data-audience="all">
-      <div class="eyebrow">Reference · Shared vocabulary <span class="role">[All]</span></div>
+      <div class="eyebrow">Reference · Shared vocabulary</div>
       <h2>Words that keep Git conversations precise.</h2>
       <div class="table-wrap"><table><thead><tr><th>Term</th><th>Plain-language definition</th></tr></thead><tbody>
         <tr><td>Branch</td><td>A movable name for a line of commits.</td></tr><tr><td>Clone</td><td>A local repository copied from another repository.</td></tr>
@@ -673,7 +542,7 @@ git status</pre><button class="copy" type="button" aria-label="Copy conflict lab
     </section>
 
     <section class="slide" id="faq" data-title="FAQ and further reading" data-audience="all">
-      <div class="eyebrow">Reference · FAQ &amp; further reading <span class="role">[All]</span></div>
+      <div class="eyebrow">Reference · FAQ &amp; further reading</div>
       <h2>Common questions, short answers.</h2>
       <details><summary>Is Git a backup?</summary><p>Not by itself. A local repository is one copy; use an approved backup and hosting strategy for important work.</p></details>
       <details><summary>Does every commit go to GitHub?</summary><p>No. Commits are local until pushed to a remote. You can make and inspect local commits offline.</p></details>

@@ -95,7 +95,7 @@ Each command is documented with: purpose, syntax, common options, a diagram of w
 
 ## 4. Page Structure and Navigation
 
-- `index.html` — landing page: overview, role-track selector, table of contents.
+- `index.html` — landing page: overview and table of contents.
 - One page per module under `pages/` (`01-what-is-git.html`, `02-core-concepts.html`, ...).
 - Every module page contains: learning objectives, content, key takeaways, knowledge check (3–5 questions), previous/next links.
 - Persistent sidebar/top navigation; breadcrumb; client-side search (optional).
