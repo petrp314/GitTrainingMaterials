@@ -27,6 +27,7 @@
     <a href="#map" data-slide="map">Learning map</a>
     <a href="#m1" data-slide="m1">1 · What is Git?</a>
     <a href="#remote-local" data-slide="remote-local">Local and remote repositories</a>
+    <a href="#activity-flow" data-slide="activity-flow">Git activity flow</a>
     <a href="#m2" data-slide="m2">2 · Core concepts</a>
     <a href="#m3" data-slide="m3">3 · Get started</a>
     <a href="#m4" data-slide="m4">4 · Everyday commands</a>
@@ -137,6 +138,58 @@
       </div>
       <div class="callout good"><p><strong>Remember:</strong> push sends your commits; fetch downloads updates; pull fetches and integrates them. Git does not synchronize repositories automatically.</p></div>
       <div class="slide-footer"><span>Each local clone has its own history</span><span>Module 1</span></div>
+    </section>
+
+    <section class="slide" id="activity-flow" data-title="How Git activities move work" data-audience="all">
+      <div class="eyebrow">Module 4 · From edit to collaboration</div>
+      <h2>See where each Git command moves work.</h2>
+      <p class="lead">Local changes become commits, then move between your repository and the shared remote.</p>
+      <div class="activity-wrap">
+        <svg class="activity-svg" viewBox="0 0 1000 410" role="img" aria-labelledby="activity-title activity-description">
+          <title id="activity-title">Git activity flow between a remote and local machine</title>
+          <desc id="activity-description">Git clone copies the remote repository to your local machine. Git add moves selected changes from the working directory to the staging area. Git commit records staged changes in local history. Git push sends commits to the remote. Git fetch downloads remote commits without integrating them. Git pull fetches and integrates remote changes.</desc>
+          <defs>
+            <marker id="activity-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z"></path>
+            </marker>
+          </defs>
+          <rect class="activity-boundary" x="20" y="12" width="205" height="385" rx="20"></rect>
+          <rect class="activity-boundary" x="280" y="12" width="700" height="385" rx="20"></rect>
+          <text class="activity-group" x="122" y="40" text-anchor="middle">Shared remote</text>
+          <text class="activity-group" x="630" y="40" text-anchor="middle">Local machine</text>
+          <rect class="activity-label" x="60" y="54" width="125" height="34" rx="7"></rect>
+          <rect class="activity-label" x="327" y="54" width="125" height="34" rx="7"></rect>
+          <rect class="activity-label" x="532" y="54" width="125" height="34" rx="7"></rect>
+          <rect class="activity-label" x="803" y="54" width="125" height="34" rx="7"></rect>
+          <text class="activity-lane" x="122" y="76" text-anchor="middle">Remote repo</text>
+          <text class="activity-lane" x="389" y="76" text-anchor="middle">Local history</text>
+          <text class="activity-lane" x="594" y="76" text-anchor="middle">Index / staging</text>
+          <text class="activity-lane" x="865" y="76" text-anchor="middle">Working directory</text>
+          <path class="activity-lifeline" d="M122 88 V380 M389 88 V380 M594 88 V380 M865 88 V380"></path>
+          <path class="activity-arrow" d="M122 112 H865" marker-end="url(#activity-arrow)"></path>
+          <rect class="activity-command" x="457" y="98" width="86" height="28" rx="6"></rect>
+          <text class="activity-command-text" x="500" y="117" text-anchor="middle">git clone</text>
+          <path class="activity-arrow" d="M865 164 H594" marker-end="url(#activity-arrow)"></path>
+          <rect class="activity-command" x="681" y="150" width="86" height="28" rx="6"></rect>
+          <text class="activity-command-text" x="724" y="169" text-anchor="middle">git add</text>
+          <path class="activity-arrow" d="M594 216 H389" marker-end="url(#activity-arrow)"></path>
+          <rect class="activity-command" x="448" y="202" width="87" height="28" rx="6"></rect>
+          <text class="activity-command-text" x="491" y="221" text-anchor="middle">git commit</text>
+          <circle class="activity-commit" cx="389" cy="216" r="6"></circle>
+          <path class="activity-arrow" d="M389 268 H122" marker-end="url(#activity-arrow)"></path>
+          <rect class="activity-command" x="205" y="254" width="86" height="28" rx="6"></rect>
+          <text class="activity-command-text" x="248" y="273" text-anchor="middle">git push</text>
+          <circle class="activity-commit" cx="389" cy="268" r="6"></circle>
+          <path class="activity-arrow" d="M122 320 H389" marker-end="url(#activity-arrow)"></path>
+          <rect class="activity-command" x="205" y="306" width="86" height="28" rx="6"></rect>
+          <text class="activity-command-text" x="248" y="325" text-anchor="middle">git fetch</text>
+          <path class="activity-arrow" d="M122 372 H865" marker-end="url(#activity-arrow)"></path>
+          <rect class="activity-command" x="457" y="358" width="86" height="28" rx="6"></rect>
+          <text class="activity-command-text" x="500" y="377" text-anchor="middle">git pull</text>
+        </svg>
+      </div>
+      <div class="callout good"><p><strong>Flow:</strong> <code>git add</code> stages; <code>git commit</code> saves locally; <code>git push</code> shares commits. <code>git fetch</code> downloads without integrating; <code>git pull</code> fetches and integrates.</p></div>
+      <div class="slide-footer"><span>Local commits stay local until pushed</span><span>Module 4</span></div>
     </section>
 
     <section class="slide" data-title="Git in context" data-audience="all">

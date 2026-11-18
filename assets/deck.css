@@ -161,6 +161,17 @@ p, li { color: #d3dae4; font-size: clamp(.95rem, 1.3vw, 1.1rem); line-height: 1.
 .sync-lane { display: grid; gap: .7rem; justify-items: center; color: var(--accent); font-size: .72rem; text-align: center; }
 .sync-direction { display: grid; justify-items: center; gap: .1rem; }
 .sync-direction span:first-child { font: 1.5rem/1 var(--mono); }
+.activity-wrap { overflow-x: auto; margin: .7rem 0; }
+.activity-svg { display: block; width: 100%; min-width: 720px; max-height: 390px; margin: 0 auto; }
+.activity-boundary { fill: #080e1755; stroke: var(--blue); stroke-width: 1.5; }
+.activity-group { fill: var(--ink); font-size: 17px; font-weight: 700; }
+.activity-label { fill: #416ca9; }
+.activity-lane { fill: var(--ink); font-size: 14px; }
+.activity-lifeline { fill: none; stroke: var(--muted); stroke-width: 2; }
+.activity-arrow { fill: none; stroke: #438dff; stroke-width: 4; }
+.activity-command { fill: #1769c2; }
+.activity-command-text { fill: #fff; font-size: 14px; }
+.activity-commit { fill: var(--surface); stroke: var(--teal); stroke-width: 3; }
 .table-wrap { overflow-x: auto; margin: 1rem 0; border: 1px solid var(--line); border-radius: .8rem; }
 table { width: 100%; border-collapse: collapse; font-size: .87rem; }
 th, td { padding: .72rem .8rem; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
@@ -231,6 +242,7 @@ details p { margin: .55rem 0 0; font-size: .92rem; }
   .arrow { flex: 0 0 auto; }
   .repo-map { grid-template-columns: minmax(0, 1fr); }
   .sync-lane { grid-template-columns: 1fr 1fr; }
+  .activity-svg { max-height: none; }
   .slide-footer { align-items: flex-start; }
   .bottom-hint { display: none; }
 }
