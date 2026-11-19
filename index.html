@@ -14,6 +14,10 @@
   <header class="topbar">
     <div class="brand"><span class="brand-mark" aria-hidden="true">git</span><span class="brand-name">Git, clearly</span></div>
     <div class="top-actions">
+      <nav class="language-switch" aria-label="Language">
+        <a href="index.html" lang="en" hreflang="en" aria-current="page">English</a>
+        <a href="index.cs.html" lang="cs" hreflang="cs">Čeština</a>
+      </nav>
       <button id="contents-toggle" type="button" aria-expanded="false" aria-controls="contents">Contents</button>
     </div>
   </header>
@@ -267,7 +271,8 @@ git config --global user.name "Ada Lovelace"
 git config --global user.email "ada@example.com"</pre><button class="copy" type="button" aria-label="Copy Git configuration commands">Copy</button></div>
       <p class="small muted">Replace the sample name and email. Use the email address appropriate for your work account. <code>--global</code> sets your default for this user; omit it to configure just the current repository. Check settings with <code>git config --list --show-origin</code>.</p>
       <div class="grid">
-        <article class="card"><h3>Create an empty repository</h3><div class="command"><pre>mkdir demo && cd demo
+        <article class="card"><h3>Create an empty repository</h3><div class="command"><pre>mkdir demo
+cd demo
 git init</pre><button class="copy" type="button" aria-label="Copy repository creation commands">Copy</button></div></article>
         <article class="card"><h3>Copy an existing repository</h3><div class="command"><pre>git clone &lt;repository-url&gt;
 cd &lt;repository-name&gt;</pre><button class="copy" type="button" aria-label="Copy clone commands">Copy</button></div></article>
@@ -401,14 +406,15 @@ branch 'feature/docs' set up to track 'origin/feature/docs'.</pre><button class=
       </div>
       <div class="command"><pre>$ git branch --list
 * main
-  feature/search
 $ git switch -c feature/search
 Switched to a new branch 'feature/search'
-$ git merge feature/search
-Updating 4a9d2b1..d20b81c
-Fast-forward
 $ git rebase main
-Successfully rebased and updated refs/heads/feature/search.</pre><button class="copy" type="button" aria-label="Copy example branch, switch, merge, and rebase output">Copy</button></div>
+Current branch feature/search is up to date.
+$ git switch main
+Switched to branch 'main'
+$ git merge feature/search
+Already up to date.</pre><button class="copy" type="button" aria-label="Copy example branch, switch, merge, and rebase output">Copy</button></div>
+      <p class="small muted">No new commit has been made in this example, so rebase and merge have nothing to integrate yet. The guided lab demonstrates a fast-forward after adding a commit.</p>
       <div class="slide-footer"><span>Pause before rewriting or force-pushing shared history</span><span>Module 4</span></div>
     </section>
 
@@ -541,7 +547,7 @@ incoming version
       </tbody></table></div>
       <div class="command"><pre>git reset --soft HEAD~1
 git reset --mixed HEAD~1</pre><button class="copy" type="button" aria-label="Copy reset examples">Copy</button></div>
-      <div class="callout warning"><p><strong>Do not run <code>git reset --hard</code> as a generic cleanup command.</strong> It discards tracked unstaged and staged changes. It does not remove untracked files. Never reset shared history without coordinating.</p></div>
+      <div class="callout warning"><p><strong>Do not run <code>git reset --hard</code> as a generic cleanup command.</strong> It discards tracked unstaged and staged changes. It can also overwrite or remove untracked files or directories that obstruct restoring tracked paths. Never reset shared history without coordinating.</p></div>
       <div class="slide-footer"><span>Before resetting: inspect status, ensure work is saved, confirm the target</span><span>Module 7</span></div>
     </section>
 
@@ -578,7 +584,8 @@ git reset --mixed HEAD~1</pre><button class="copy" type="button" aria-label="Cop
       <div class="eyebrow">Guided developer lab · Part 1</div>
       <h2>Build a small repository and record a change.</h2>
       <p>Run these steps in a new, disposable directory. Git identity must already be configured. Commands below work in Git Bash, macOS Terminal, or a Linux shell.</p>
-      <div class="command"><pre>mkdir git-practice && cd git-practice
+      <div class="command"><pre>mkdir git-practice
+cd git-practice
 git init
 printf "# Trail Notes\nFirst draft.\n" &gt; README.md
 git status
@@ -586,7 +593,7 @@ git add README.md
 git diff --staged
 git commit -m "Add trail notes"
 git log --oneline</pre><button class="copy" type="button" aria-label="Copy first lab steps">Copy</button></div>
-      <div class="callout"><p>On Windows PowerShell, create the file with <code>Set-Content README.md "# Trail Notes`nFirst draft."</code> instead of <code>printf</code>.</p></div>
+      <div class="callout"><p>On Windows PowerShell, create the file with <code>Set-Content -Encoding utf8 README.md "# Trail Notes`nFirst draft."</code> instead of <code>printf</code>.</p></div>
       <ul class="checklist"><li><code>git status</code> showed an untracked file</li><li>Staged diff showed the intended text</li><li>Commit appeared in <code>git log</code></li><li>Repository is local; nothing has been published</li></ul>
       <div class="slide-footer"><span>Lab checkpoint 1 · local history</span><span>Module 3 + 4</span></div>
     </section>
@@ -602,6 +609,7 @@ git switch main
 git merge feature/add-route
 git log --oneline --graph --decorate</pre><button class="copy" type="button" aria-label="Copy branch and merge lab">Copy</button></div>
       <p class="small muted">If <code>git init</code> chose a branch other than <code>main</code>, check the current branch with <code>git branch --show-current</code> and replace <code>main</code> in the commands above.</p>
+      <p class="small muted">On Windows PowerShell, replace the <code>printf</code> line with <code>Add-Content -Encoding utf8 README.md "`nRoute: Pine Loop"</code>.</p>
       <div class="grid">
         <article class="card"><h3>Observe</h3><p>The new branch starts from the first commit. Its new commit can be integrated by a fast-forward when the target has not diverged.</p></article>
         <article class="card"><h3>Discuss</h3><p>How would a pull request add review and automated checks before this merge?</p></article>

@@ -5,8 +5,16 @@
   const progress = document.querySelector(".progress-bar");
   const contents = document.querySelector("#contents");
   const contentsButton = document.querySelector("#contents-toggle");
+  const languageLinks = [...document.querySelectorAll(".language-switch a")];
+  const brand = document.querySelector(".brand-name").textContent;
+  const labels = document.documentElement.lang === "cs"
+    ? { title: "Kurz Gitu", copied: "Zkopírováno", copyUnavailable: "Kopírování není dostupné" }
+    : { title: "Git training", copied: "Copied", copyUnavailable: "Copy unavailable" };
   const visibleSlides = slides;
-  let current = 0;
+  slides.forEach((slide, index) => {
+    if (!slide.id) slide.id = `slide-${index + 1}`;
+  });
+  let current = Math.max(0, slides.findIndex(slide => `#${slide.id}` === window.location.hash));
 
   const render = () => {
     visibleSlides.forEach((slide, index) => {
@@ -19,7 +27,8 @@
     totalLabel.textContent = String(visibleSlides.length);
     progress.style.width = `${((current + 1) / visibleSlides.length) * 100}%`;
     progress.parentElement.setAttribute("aria-valuenow", String(Math.round(((current + 1) / visibleSlides.length) * 100)));
-    document.title = `${active.dataset.title || active.querySelector("h1, h2")?.textContent || "Git training"} — Git, clearly`;
+    document.title = `${active.dataset.title || active.querySelector("h1, h2")?.textContent || labels.title} — ${brand}`;
+    languageLinks.forEach(link => { link.hash = active.id; });
     document.querySelectorAll(".contents-panel a").forEach(link => {
       link.setAttribute("aria-current", link.dataset.slide === active.id ? "true" : "false");
     });
@@ -67,14 +76,15 @@
     }
   });
   document.querySelectorAll(".copy").forEach(button => {
+    const defaultLabel = button.textContent;
     button.addEventListener("click", async () => {
       try {
         await navigator.clipboard.writeText(button.closest(".command").querySelector("pre").innerText);
-        button.textContent = "Copied";
-        window.setTimeout(() => { button.textContent = "Copy"; }, 1400);
+        button.textContent = labels.copied;
+        window.setTimeout(() => { button.textContent = defaultLabel; }, 1400);
       } catch {
-        button.textContent = "Copy unavailable";
-        window.setTimeout(() => { button.textContent = "Copy"; }, 1800);
+        button.textContent = labels.copyUnavailable;
+        window.setTimeout(() => { button.textContent = defaultLabel; }, 1800);
       }
     });
   });

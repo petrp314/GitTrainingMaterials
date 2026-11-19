@@ -100,6 +100,7 @@ Each command is documented with: purpose, syntax, common options, a diagram of w
 - Every module page contains: learning objectives, content, key takeaways, knowledge check (3–5 questions), previous/next links.
 - Persistent sidebar/top navigation; breadcrumb; client-side search (optional).
 - Cheat sheet and glossary reachable from every page.
+- Complete English and Czech slide editions, with visible language links that retain the current slide. Localize navigation, accessibility labels, diagrams, and command explanations; preserve Git syntax and explain untranslated terminal output.
 
 ## 5. Exercises and Examples
 

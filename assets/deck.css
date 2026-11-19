@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 :root {
   color-scheme: dark;
   --ink: #f3f5f7;
@@ -50,6 +52,15 @@ button:focus-visible, a:focus-visible, summary:focus-visible {
 .brand { display: flex; align-items: center; gap: .75rem; font-weight: 800; letter-spacing: -.03em; }
 .brand-mark { display: grid; width: 2rem; height: 2rem; place-items: center; border-radius: .65rem; color: #172033; background: var(--accent); font-family: var(--mono); font-weight: 500; }
 .top-actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: .55rem; }
+.language-switch { display: flex; flex-wrap: wrap; gap: .35rem; }
+.language-switch a {
+  border: 1px solid var(--line);
+  border-radius: .65rem;
+  padding: .55rem .65rem;
+  background: var(--surface);
+  text-decoration: none;
+}
+.language-switch a:hover, .language-switch a[aria-current="page"] { color: var(--accent); border-color: var(--accent); }
 .top-actions button, .nav-button {
   border: 1px solid var(--line);
   border-radius: .65rem;
@@ -64,6 +75,7 @@ button:focus-visible, a:focus-visible, summary:focus-visible {
 
 .deck {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   min-height: calc(100vh - 8.7rem);
   place-items: center;
   padding: clamp(1rem, 4vh, 3rem) clamp(1rem, 5vw, 4rem);
@@ -232,7 +244,7 @@ details p { margin: .55rem 0 0; font-size: .92rem; }
   .brand { margin-top: .35rem; }
   .brand-name { display: none; }
   .top-actions { gap: .4rem; }
-  .top-actions button { padding: .48rem .6rem; font-size: .82rem; }
+  .top-actions button, .language-switch a { padding: .48rem .6rem; font-size: .82rem; }
   .deck { min-height: calc(100svh - 8rem); padding: .8rem; }
   .slide { min-height: 70svh; border-radius: 1rem; padding: 1.3rem; }
   .grid, .grid.three, .grid.four { grid-template-columns: 1fr; }

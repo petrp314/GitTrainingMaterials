@@ -1,0 +1,675 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Praktický vizuální kurz Gitu pro projektové manažery, architekty a vývojáře.">
+  <meta name="theme-color" content="#09111d">
+  <title>Git srozumitelně — výukové snímky</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/deck.css">
+  <script src="assets/deck.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark" aria-hidden="true">git</span><span class="brand-name">Git srozumitelně</span></div>
+    <div class="top-actions">
+      <nav class="language-switch" aria-label="Jazyk">
+        <a href="index.html" lang="en" hreflang="en">English</a>
+        <a href="index.cs.html" lang="cs" hreflang="cs" aria-current="page">Čeština</a>
+      </nav>
+      <button id="contents-toggle" type="button" aria-expanded="false" aria-controls="contents">Obsah</button>
+    </div>
+  </header>
+  <div class="progress-track" role="progressbar" aria-label="Průběh kurzu" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+    <div class="progress-bar"></div>
+  </div>
+
+  <nav id="contents" class="contents-panel" aria-label="Obsah snímků" hidden>
+    <h2>Obsah kurzu</h2>
+    <a href="#welcome" data-slide="welcome">Vítejte</a>
+    <a href="#map" data-slide="map">Mapa kurzu</a>
+    <a href="#m1" data-slide="m1">1 · Co je Git?</a>
+    <a href="#remote-local" data-slide="remote-local">Lokální a vzdálené repozitáře</a>
+    <a href="#activity-flow" data-slide="activity-flow">Tok práce v Gitu</a>
+    <a href="#m2" data-slide="m2">2 · Základní pojmy</a>
+    <a href="#m3" data-slide="m3">3 · Začínáme</a>
+    <a href="#m4" data-slide="m4">4 · Každodenní příkazy</a>
+    <a href="#m5" data-slide="m5">5 · Větve a slučování</a>
+    <a href="#m6" data-slide="m6">6 · Týmové postupy</a>
+    <a href="#m7" data-slide="m7">7 · Vrácení změn a obnova</a>
+    <a href="#m8" data-slide="m8">8 · Dobré návyky</a>
+    <a href="#lab" data-slide="lab">Praktické cvičení pro vývojáře</a>
+    <a href="#cheat" data-slide="cheat">Přehled příkazů</a>
+    <a href="#glossary" data-slide="glossary">Slovníček</a>
+    <a href="#faq" data-slide="faq">Časté dotazy a další četba</a>
+  </nav>
+
+  <main class="deck" id="deck">
+    <section class="slide title-slide" id="welcome" data-title="Vítejte" data-audience="all">
+      <div class="title-mark" aria-hidden="true">git</div>
+      <div class="eyebrow">Vizuální průvodce</div>
+      <h1>Git <span class="accent">srozumitelně.</span></h1>
+      <p class="lead">Praktický vizuální úvod do správy verzí: od prvního commitu až po jistou spolupráci a bezpečnou obnovu změn.</p>
+      <div class="title-meta">
+      </div>
+      <div class="slide-footer"><span></span></div>
+    </section>
+
+    <section class="slide" id="map" data-title="Mapa kurzu" data-audience="all">
+      <div class="eyebrow">Začněte zde</div>
+      <h2>Jeden nástroj. Tři užitečné pohledy.</h2>
+      <p class="lead">Git zaznamenává změny do historie, kterou můžete prohlížet, sdílet, větvit a obnovovat.</p>
+      <div class="grid three">
+        <article class="card"><h3 class="accent">Projektové řízení · Zviditelněte změny</h3><p>Propojte práci s rozhodnutími, kontrolami, vydáními a dohledatelnou historií projektu. Příkazy nejsou nutné.</p></article>
+        <article class="card"><h3 class="blue">Architektura · Navrhněte tok práce</h3><p>Zvolte pravidla pro repozitáře a větve, která vyvažují rychlost integrace, potřeby vydávání a správu.</p></article>
+        <article class="card"><h3 class="teal">Vývoj · Získejte jistotu</h3><p>Ve cvičném repozitáři si bezpečně vyzkoušejte prohlížení změn, jejich přípravu, vytváření commitů, synchronizaci, řešení konfliktů a obnovu.</p></article>
+      </div>
+      <div class="callout good"><p><strong>Cíle kurzu:</strong> vysvětlit distribuovanou správu verzí, orientovat se v datovém modelu Gitu, používat běžné příkazy a zvolit týmový postup s ohledem na jeho kompromisy.</p></div>
+      <div class="slide-footer"><span>Mapa kurzu</span><span>Celý kurz · všechny role</span></div>
+    </section>
+
+    <section class="slide" id="m1" data-title="1 · Co je Git?" data-audience="all">
+      <div class="eyebrow">Modul 1 · Co je Git?</div>
+      <h2>Správa verzí dává změnám jasnou podobu.</h2>
+      <p class="lead">Bez správy verzí si týmy předávají soubory a doufají, že jejich názvy vysvětlí historii. Git uchovává trvalou a přehlednou historii snímků projektu.</p>
+      <div class="grid three">
+        <article class="card"><h3>Uchovávejte historii</h3><p>Zjistěte, jak a kdy se soubor změnil a kdo změnu zaznamenal.</p></article>
+        <article class="card"><h3>Spolupracujte</h3><p>Pracujte souběžně, kontrolujte navržené změny a pak je spojte.</p></article>
+        <article class="card"><h3>Obnovujte</h3><p>Porovnávejte verze a v případě potřeby se vraťte ke známému funkčnímu stavu.</p></article>
+      </div>
+      <div class="callout"><p>Historii Gitu chápejte jako posloupnost pojmenovaných a kontrolovatelných bodů — nikoli jako zálohovací disk nebo jeho náhradu.</p></div>
+      <div class="slide-footer"><span>Cíl výuky · vysvětlit, jaký problém správa verzí řeší</span><span>Modul 1</span></div>
+    </section>
+
+    <section class="slide" data-title="Centralizovaný a distribuovaný model" data-audience="all">
+      <div class="eyebrow">Modul 1 · Dva modely</div>
+      <h2>Git je distribuovaný: každý klon obsahuje repozitář.</h2>
+      <div class="grid">
+        <article class="card"><h3>Centralizovaný model · SVN, CVS</h3><p>Klienti získávají pracovní soubory z centrálního serveru. Server je hlavním zdrojem historie; k zaznamenání sdílených změn je obvykle potřeba připojení k síti.</p></article>
+        <article class="card"><h3>Distribuovaný model · Git</h3><p>Každý klon obsahuje lokální repozitář a historii projektu. Pracovat, vytvářet commity i provádět řadu kontrol lze bez připojení; sdílení probíhá výměnou commitů.</p></article>
+      </div>
+      <div class="diagram" role="img" aria-label="Centralizovaná správa verzí propojuje několik pracovních kopií s jedním centrálním repozitářem. V Gitu obsahuje klon každého vývojáře vlastní repozitář a klony si vyměňují commity.">
+        <div class="node"><strong>Centrální server</strong><span>hlavní zdroj historie</span></div><span class="arrow" aria-hidden="true">↔</span>
+        <div class="node"><strong>Pracovní kopie</strong><span>klient</span></div>
+        <div class="arrow" aria-hidden="true">···</div>
+        <div class="node"><strong>Klon Gitu A</strong><span>repozitář + soubory</span></div><span class="arrow" aria-hidden="true">↔</span>
+        <div class="node"><strong>Klon Gitu B</strong><span>repozitář + soubory</span></div>
+        <p class="diagram-caption">Hostovací služba je praktickým společným místem; samotný Git je systém pro správu verzí.</p>
+      </div>
+      <div class="slide-footer"><span>Distribuovaný neznamená „bez centrálního místa pro spolupráci“</span><span>Modul 1</span></div>
+    </section>
+
+    <section class="slide" id="remote-local" data-title="Lokální a vzdálené repozitáře" data-audience="all">
+      <div class="eyebrow">Modul 1 · Sdílení práce</div>
+      <h2>Každý klon má vlastní repozitář.</h2>
+      <p class="lead">Vzdálený repozitář je jiný repozitář — často hostovaný online — který spolupracovníkům poskytuje společné místo pro výměnu commitů.</p>
+      <div class="repo-map" role="group" aria-label="Dva lokální klony si vyměňují commity se společným vzdáleným repozitářem">
+        <article class="repo-card">
+          <h3>Počítač A</h3>
+          <span class="repo-location">Lokální klon</span>
+          <div class="working-tree">Pracovní strom</div>
+          <div class="repo-history">
+            <strong>Lokální repozitář</strong>
+            <ol class="commit-stack"><li>Commit 3</li><li>Commit 2</li><li>Commit 1</li></ol>
+          </div>
+        </article>
+        <div class="sync-lane" aria-label="Počítač A ke vzdálenému repozitáři">
+          <div class="sync-direction"><span aria-hidden="true">→</span><span>odeslání commitů</span></div>
+          <div class="sync-direction"><span aria-hidden="true">←</span><span>stažení / stažení a začlenění</span></div>
+        </div>
+        <article class="repo-card remote-repo">
+          <h3>Sdílený vzdálený repozitář</h3>
+          <span class="repo-location">Hostovaný repozitář</span>
+          <div class="repo-history">
+            <strong>Vzdálený repozitář</strong>
+            <ol class="commit-stack"><li>Commit 3</li><li>Commit 2</li><li>Commit 1</li></ol>
+          </div>
+        </article>
+        <div class="sync-lane" aria-label="Vzdálený repozitář k počítači B">
+          <div class="sync-direction"><span aria-hidden="true">←</span><span>odeslání commitů</span></div>
+          <div class="sync-direction"><span aria-hidden="true">→</span><span>stažení / stažení a začlenění</span></div>
+        </div>
+        <article class="repo-card">
+          <h3>Počítač B</h3>
+          <span class="repo-location">Lokální klon</span>
+          <div class="working-tree">Pracovní strom</div>
+          <div class="repo-history">
+            <strong>Lokální repozitář</strong>
+            <ol class="commit-stack"><li>Commit 3</li><li>Commit 2</li><li>Commit 1</li></ol>
+          </div>
+        </article>
+      </div>
+      <div class="callout good"><p><strong>Pamatujte:</strong> push odesílá vaše commity, fetch stahuje aktualizace a pull je stáhne a začlení. Git repozitáře nesynchronizuje automaticky.</p></div>
+      <div class="slide-footer"><span>Každý lokální klon má vlastní historii</span><span>Modul 1</span></div>
+    </section>
+
+    <section class="slide" id="activity-flow" data-title="Jak příkazy Gitu přesouvají změny" data-audience="all">
+      <div class="eyebrow">Modul 4 · Od úpravy ke spolupráci</div>
+      <h2>Podívejte se, kam jednotlivé příkazy Gitu přesouvají změny.</h2>
+      <p class="lead">Lokální změny se stanou commity, které se pak přesouvají mezi vaším repozitářem a sdíleným vzdáleným repozitářem.</p>
+      <div class="activity-wrap">
+        <svg class="activity-svg" viewBox="0 0 1000 410" role="img" aria-labelledby="activity-title activity-description">
+          <title id="activity-title">Tok práce v Gitu mezi vzdáleným repozitářem a lokálním počítačem</title>
+          <desc id="activity-description">Příkaz git clone zkopíruje vzdálený repozitář do lokálního počítače. Git add zkopíruje vybraný obsah z pracovního stromu do oblasti přípravy; pracovní soubory ponechá beze změny. Git commit zaznamená připravený obsah do lokální historie. Git push odešle commity do vzdáleného repozitáře. Git fetch stáhne vzdálené commity, ale nezačlení je do aktuální větve. Git pull vzdálené změny stáhne a začlení.</desc>
+          <defs>
+            <marker id="activity-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z"></path>
+            </marker>
+          </defs>
+          <rect class="activity-boundary" x="20" y="12" width="205" height="385" rx="20"></rect>
+          <rect class="activity-boundary" x="280" y="12" width="700" height="385" rx="20"></rect>
+          <text class="activity-group" x="122" y="40" text-anchor="middle">Sdílený repozitář</text>
+          <text class="activity-group" x="630" y="40" text-anchor="middle">Lokální počítač</text>
+          <rect class="activity-label" x="60" y="54" width="125" height="34" rx="7"></rect>
+          <rect class="activity-label" x="327" y="54" width="125" height="34" rx="7"></rect>
+          <rect class="activity-label" x="532" y="54" width="125" height="34" rx="7"></rect>
+          <rect class="activity-label" x="803" y="54" width="125" height="34" rx="7"></rect>
+          <text class="activity-lane" x="122" y="76" text-anchor="middle">Vzdálený repozitář</text>
+          <text class="activity-lane" x="389" y="76" text-anchor="middle">Lokální historie</text>
+          <text class="activity-lane" x="594" y="76" text-anchor="middle">Index</text>
+          <text class="activity-lane" x="865" y="76" text-anchor="middle">Pracovní adresář</text>
+          <path class="activity-lifeline" d="M122 88 V380 M389 88 V380 M594 88 V380 M865 88 V380"></path>
+          <path class="activity-arrow" d="M122 112 H865" marker-end="url(#activity-arrow)"></path>
+          <rect class="activity-command" x="457" y="98" width="86" height="28" rx="6"></rect>
+          <text class="activity-command-text" x="500" y="117" text-anchor="middle">git clone</text>
+          <path class="activity-arrow" d="M865 164 H594" marker-end="url(#activity-arrow)"></path>
+          <rect class="activity-command" x="681" y="150" width="86" height="28" rx="6"></rect>
+          <text class="activity-command-text" x="724" y="169" text-anchor="middle">git add</text>
+          <path class="activity-arrow" d="M594 216 H389" marker-end="url(#activity-arrow)"></path>
+          <rect class="activity-command" x="448" y="202" width="87" height="28" rx="6"></rect>
+          <text class="activity-command-text" x="491" y="221" text-anchor="middle">git commit</text>
+          <circle class="activity-commit" cx="389" cy="216" r="6"></circle>
+          <path class="activity-arrow" d="M389 268 H122" marker-end="url(#activity-arrow)"></path>
+          <rect class="activity-command" x="205" y="254" width="86" height="28" rx="6"></rect>
+          <text class="activity-command-text" x="248" y="273" text-anchor="middle">git push</text>
+          <circle class="activity-commit" cx="389" cy="268" r="6"></circle>
+          <path class="activity-arrow" d="M122 320 H389" marker-end="url(#activity-arrow)"></path>
+          <rect class="activity-command" x="205" y="306" width="86" height="28" rx="6"></rect>
+          <text class="activity-command-text" x="248" y="325" text-anchor="middle">git fetch</text>
+          <path class="activity-arrow" d="M122 372 H865" marker-end="url(#activity-arrow)"></path>
+          <rect class="activity-command" x="457" y="358" width="86" height="28" rx="6"></rect>
+          <text class="activity-command-text" x="500" y="377" text-anchor="middle">git pull</text>
+        </svg>
+      </div>
+      <div class="callout good"><p><strong>Tok změn:</strong> <code>git add</code> připraví změny; <code>git commit</code> je uloží lokálně; <code>git push</code> sdílí commity. <code>git fetch</code> stahuje bez začlenění; <code>git pull</code> stahuje a začleňuje.</p></div>
+      <div class="slide-footer"><span>Lokální commity zůstávají lokální, dokud je neodešlete</span><span>Modul 4</span></div>
+    </section>
+
+    <section class="slide" data-title="Git v kontextu" data-audience="all">
+      <div class="eyebrow">Modul 1 · Co Git je — a co není</div>
+      <h2>Git uchovává historii. Platformy pomáhají týmům ji využívat.</h2>
+      <div class="grid">
+        <article class="card"><h3>Git nabízí</h3><ul><li>Lokální historii a větvení</li><li>Kontrolu integrity obsahu pomocí hashů objektů</li><li>Nástroje pro porovnávání, slučování a sdílení práce</li></ul></article>
+        <article class="card"><h3>GitHub, GitLab, Azure DevOps a Bitbucket nabízejí</h3><ul><li>Hostované repozitáře a řízení přístupu</li><li>Požadavky na začlenění změn (pull/merge requests), kontroly a evidenci úkolů</li><li>Automatizaci, vydávání verzí a funkce pro týmovou spolupráci</li></ul></article>
+      </div>
+      <div class="callout"><p><strong>Integrita:</strong> Git identifikuje objekty pomocí hashů odvozených z obsahu (algoritmus závisí na formátu repozitáře). Linus Torvalds vytvořil Git v roce 2005 pro vývoj jádra Linuxu; distribuovaný návrh a levné větvení podporují souběžnou spolupráci.</p></div>
+      <div class="slide-footer"><span>Hlavní poznatek · Git je nástroj, hosting je služba</span><span>Modul 1</span></div>
+    </section>
+
+    <section class="slide" id="m2" data-title="2 · Základní pojmy" data-audience="all">
+      <div class="eyebrow">Modul 2 · Základní pojmy</div>
+      <h2>Od úpravy přes tři lokální oblasti až ke sdílení.</h2>
+      <div class="diagram" role="img" aria-label="Změny postupují z pracovního stromu do oblasti přípravy, poté se jako commit uloží do lokálního repozitáře a lze je odeslat do vzdáleného repozitáře.">
+        <div class="node"><strong>Pracovní strom</strong><span>úprava souborů</span></div><span class="arrow" aria-hidden="true">→</span>
+        <div class="node"><strong>Oblast přípravy</strong><span>výběr obsahu příštího snímku</span></div><span class="arrow" aria-hidden="true">→</span>
+        <div class="node"><strong>Lokální repozitář</strong><span>historie commitů</span></div><span class="arrow" aria-hidden="true">⇄</span>
+        <div class="node"><strong>Vzdálený repozitář</strong><span>sdílený repozitář</span></div>
+        <p class="diagram-caption">Commit zaznamená připravený obsah. Příkazy push a fetch vyměňují commity se vzdáleným repozitářem.</p>
+      </div>
+      <div class="grid three">
+        <article class="card"><h3>Pracovní strom (working tree)</h3><p>Soubory, které máte právě načtené a které čtete či upravujete.</p></article>
+        <article class="card"><h3>Index (oblast přípravy)</h3><p>Navržený obsah příštího commitu; přípravou (staging) vědomě vybíráte, co zaznamenáte.</p></article>
+        <article class="card"><h3>Repozitář (repository)</h3><p>Lokální databáze objektů a historie Gitu v adresáři <code>.git</code>.</p></article>
+      </div>
+      <div class="slide-footer"><span>Cíl výuky · popsat tři oblasti</span><span>Modul 2</span></div>
+    </section>
+
+    <section class="slide" data-title="Commity a větve" data-audience="all">
+      <div class="eyebrow">Modul 2 · Historie je graf</div>
+      <h2>Větev je jednoduchý název pro samostatnou linii práce.</h2>
+      <svg class="graph" viewBox="0 0 760 250" role="img" aria-labelledby="graph-title graph-desc">
+        <title id="graph-title">Graf commitů s větví pro novou funkci</title>
+        <desc id="graph-desc">Commity A, B a D ve větvi main tvoří jednu linii. Větev feature vychází z B, přidá commit C a v bodě D se sloučí.</desc>
+        <path class="main-line" d="M90 145 H670"></path><path class="branch-line" d="M260 145 Q340 145 380 70 H500 Q570 70 620 145"></path>
+        <circle class="commit" cx="100" cy="145" r="20"></circle><circle class="commit" cx="260" cy="145" r="20"></circle>
+        <circle class="commit" cx="410" cy="70" r="20"></circle><circle class="commit" cx="650" cy="145" r="20"></circle>
+        <text x="94" y="150">A</text><text x="254" y="150">B</text><text x="404" y="75">C</text><text x="644" y="150">D</text>
+        <text x="95" y="202">main</text><text x="382" y="34">feature</text>
+      </svg>
+      <div class="grid three">
+        <article class="card"><h3>Commit</h3><p>Zaznamenaný snímek s popisem, autorem, časem a nadřazeným commitem či commity.</p></article>
+        <article class="card"><h3>Větev (branch)</h3><p>Posuvný odkaz na commit. Její vytvoření nekopíruje celý projekt.</p></article>
+        <article class="card"><h3>HEAD</h3><p>Aktuální pozice: obvykle poslední commit právě vybrané větve.</p></article>
+      </div>
+      <div class="slide-footer"><span>Historie commitů je DAG: orientovaný acyklický graf se sdílenými předky</span><span>Modul 2</span></div>
+    </section>
+
+    <section class="slide" data-title="Objekty repozitáře a pojmy" data-audience="all">
+      <div class="eyebrow">Modul 2 · Názvy jednotlivých částí</div>
+      <h2>Z malých objektů se skládá snímek projektu.</h2>
+      <div class="grid three">
+        <article class="card"><h3>Blob</h3><p>Ukládá obsah souboru. Git identifikuje objekty hashem odvozeným z jejich obsahu.</p></article>
+        <article class="card"><h3>Strom (tree)</h3><p>Pojmenovává soubory a adresáře a odkazuje na jejich objekty blob nebo vnořené stromy.</p></article>
+        <article class="card"><h3>Commit</h3><p>Odkazuje na kořenový strom a zaznamenává předky a metadata.</p></article>
+      </div>
+      <div class="table-wrap"><table><thead><tr><th>Pojem</th><th>Praktický význam</th></tr></thead><tbody>
+        <tr><td>Repozitář</td><td>Historie projektu a objekty Gitu, lokálně nebo hostované.</td></tr>
+        <tr><td>Vzdálený repozitář (remote)</td><td>Pojmenované připojení k jinému repozitáři, často na hostovací platformě.</td></tr>
+        <tr><td><code>origin</code></td><td>Obvyklý výchozí název vzdáleného repozitáře, ze kterého klon vznikl; nejde o speciální klíčové slovo Gitu.</td></tr>
+        <tr><td>Značka (tag)</td><td>Název přiřazený ke commitu, často používaný k označení vydání.</td></tr>
+      </tbody></table></div>
+      <div class="slide-footer"><span>Závěr · commity odkazují na snímky obsahu, nejen na změny jednotlivých souborů</span><span>Modul 2</span></div>
+    </section>
+
+    <section class="slide" id="m3" data-title="3 · Začínáme" data-audience="dev all">
+      <div class="eyebrow">Modul 3 · Začínáme</div>
+      <h2>Nastavte svou identitu a pak vytvořte nebo naklonujte repozitář.</h2>
+      <p>Nainstalujte Git pomocí správce balíčků svého operačního systému nebo z oficiální stránky Git. Ověřte nainstalovanou verzi a nastavte jméno a e-mail, které se budou zobrazovat u vašich commitů.</p>
+      <div class="command"><pre>git --version
+git config --global user.name "Ada Lovelace"
+git config --global user.email "ada@example.com"</pre><button class="copy" type="button" aria-label="Zkopírovat příkazy pro konfiguraci Gitu">Kopírovat</button></div>
+      <p class="small muted">Nahraďte ukázkové jméno a e-mail. Použijte e-mail vhodný pro pracovní účet. Parametr <code>--global</code> nastaví výchozí hodnoty pro tohoto uživatele; vynechte jej, chcete-li nastavit pouze aktuální repozitář. Nastavení ověřte příkazem <code>git config --list --show-origin</code>.</p>
+      <div class="grid">
+        <article class="card"><h3>Vytvoření prázdného repozitáře</h3><div class="command"><pre>mkdir demo
+cd demo
+git init</pre><button class="copy" type="button" aria-label="Zkopírovat příkazy pro vytvoření repozitáře">Kopírovat</button></div></article>
+        <article class="card"><h3>Naklonování existujícího repozitáře</h3><div class="command"><pre>git clone &lt;repository-url&gt;
+cd &lt;repository-name&gt;</pre><button class="copy" type="button" aria-label="Zkopírovat příkazy pro klonování">Kopírovat</button></div></article>
+      </div>
+      <p class="small muted">Zástupné hodnoty v ostrých závorkách, například <code>&lt;repository-url&gt;</code> (adresa repozitáře), nahraďte vlastními údaji bez závorek. Názvy příkazů a přepínačů se nepřekládají.</p>
+      <div class="slide-footer"><span>Přihlašovací údaje jsou oddělené od identity autora commitů</span><span>Modul 3</span></div>
+    </section>
+
+    <section class="slide" data-title="Ignorování souborů, konce řádků a ověřování" data-audience="dev arch">
+      <div class="eyebrow">Modul 3 · Nastavení repozitáře</div>
+      <h2>Mějte pod kontrolou generované soubory, rozdíly mezi platformami i přihlašovací údaje.</h2>
+      <div class="grid three">
+        <article class="card"><h3><code>.gitignore</code></h3><p>Uvádí nesledované cesty, které má Git ignorovat, například výstupy sestavení a lokální tajné údaje. Již commitované soubory tím <strong>nepřestanou</strong> být sledovány.</p></article>
+        <article class="card"><h3><code>.gitattributes</code></h3><p>Umožňuje sjednotit normalizaci textu, chování diffu a práci s binárními soubory napříč přispěvateli. Záleží-li na koncích řádků, stanovte v projektu výslovná pravidla.</p></article>
+        <article class="card"><h3>Ověřování</h3><p>Používejte schváleného správce přihlašovacích údajů pro HTTPS nebo nastavte klíč SSH. Nikdy nevkládejte tokeny ani soukromé klíče do repozitáře.</p></article>
+      </div>
+      <div class="callout warning"><p><strong>Dostal se tajný údaj do commitu?</strong> Odstranění souboru v pozdějším commitu jej z historie nevymaže. Nejprve přihlašovací údaj zneplatněte nebo obměňte; potom koordinujte vyčištění historie a informování dotčených osob.</p></div>
+      <div class="slide-footer"><span>Tip · před prvním commitem zkontrolujte pravidla ignorování</span><span>Modul 3</span></div>
+    </section>
+
+    <section class="slide" id="m4" data-title="4 · Každodenní příkazy" data-audience="dev all">
+      <div class="eyebrow">Modul 4 · Každodenní příkazy</div>
+      <h2>Nejprve změny zkontrolujte. Potom vyberte, co zaznamenat.</h2>
+      <div class="grid">
+        <article class="card"><h3><code>git status</code> · kontrola stavu</h3><p><strong>Účel:</strong> shrne aktuální větev, připravené a nepřipravené změny i nesledované soubory.</p><p><strong>Syntaxe:</strong> <code>git status [--short]</code></p><p><strong>Příklad:</strong> nepřipravenou úpravu zobrazí v části „Changes not staged for commit“ jako <code>modified: README.md</code>. Parametr <code>--short</code> zobrazí stručný výpis.</p><p><strong>Úskalí:</strong> příkaz stav shrnuje, ale nezobrazuje vlastní rozdíl.</p></article>
+        <article class="card"><h3><code>git diff</code> · kontrola obsahu</h3><p><strong>Účel:</strong> porovná pracovní strom s indexem; připravené změny porovnáte s HEAD pomocí <code>--staged</code>.</p><p><strong>Syntaxe:</strong> <code>git diff [--staged]</code></p><p><strong>Příklad:</strong> <code>git diff --staged</code> zobrazí změny připravené pro příští commit.</p><p><strong>Přepínače:</strong> <code>--stat</code> zobrazí souhrn; <code>--word-diff</code> porovnává jednotlivá slova.</p><p><strong>Úskalí:</strong> samotný <code>git diff</code> připravené změny nezahrnuje.</p></article>
+      </div>
+      <div class="diagram" role="img" aria-label="Příkaz status kontroluje pracovní strom a index. Diff ve výchozím nastavení porovnává nepřipravené změny; s přepínačem --staged porovnává změny připravené.">
+        <div class="node"><strong>Pracovní strom</strong><span>nepřipravené úpravy</span></div><span class="arrow" aria-hidden="true">git diff →</span><div class="node"><strong>Index</strong><span>připravený snímek</span></div><span class="arrow" aria-hidden="true">--staged →</span><div class="node"><strong>HEAD</strong><span>poslední commit</span></div>
+        <p class="diagram-caption"><code>git status</code> shrnuje oba stavy; <code>git diff</code> zobrazí podrobnosti rozdílů.</p>
+      </div>
+      <div class="command"><pre>$ git status --short
+ M README.md
+$ git diff --stat
+ README.md | 2 ++
+ 1 file changed, 2 insertions(+)</pre><button class="copy" type="button" aria-label="Zkopírovat ukázkový výstup příkazů status a diff">Kopírovat</button></div>
+      <p class="small muted">Ukázkový výstup: status používá dva sloupce pro stav indexu a pracovního stromu; mezera následovaná znakem <code>M</code> označuje nepřipravenou změnu.</p>
+      <p class="small muted">Výstupy Gitu jsou v příkladech ponechány v angličtině; jazyk výpisů závisí na instalaci.</p>
+      <div class="slide-footer"><span>Postup · před změnou stavu nejprve zkontrolujte změny</span><span>Modul 4</span></div>
+    </section>
+
+    <section class="slide" data-title="Připravte promyšlený snímek" data-audience="dev">
+      <div class="eyebrow">Modul 4 · Příprava změn</div>
+      <h2><code>git add</code> vybírá obsah příštího commitu.</h2>
+      <div class="grid">
+        <article class="card"><h3>Účel a syntaxe</h3><p>Přidá vybraný obsah souborů z pracovního stromu do indexu.</p><div class="command"><pre>git add README.md
+git add src/
+git add -p</pre><button class="copy" type="button" aria-label="Zkopírovat příklady příkazu git add">Kopírovat</button></div><p><code>-p</code> interaktivně vybírá části změn. <code>git add -A</code> připraví všechna přidání, úpravy i odstranění v repozitáři.</p></article>
+        <article class="card"><h3>Příklad a úskalí</h3><p>Upravte dva soubory, jeden připravte a zkontrolujte výsledek:</p><div class="command"><pre>git add README.md
+git status
+git diff --staged</pre><button class="copy" type="button" aria-label="Zkopírovat příkazy pro přípravu a kontrolu">Kopírovat</button></div><p>Do příštího commitu se dostane pouze připravený obsah. Opětovná příprava souboru aktualizuje jeho připravený snímek. Před použitím <code>-A</code> zkontrolujte, zda omylem nepřidáváte nežádoucí soubory.</p></article>
+      </div>
+      <div class="callout good"><p><strong>Dobrý návyk:</strong> před commitem zkontrolujte <code>git diff --staged</code>. Index je užitečné místo pro kontrolu, nikoli zbytečná práce.</p></div>
+      <div class="command"><pre>$ git add README.md
+(při úspěchu bez výstupu)
+$ git status --short
+M  README.md</pre><button class="copy" type="button" aria-label="Zkopírovat ukázkový výstup přípravy změn">Kopírovat</button></div>
+      <div class="slide-footer"><span>Změna stavu · pracovní strom → index</span><span>Modul 4</span></div>
+    </section>
+
+    <section class="slide" data-title="Vytvářejte malé a srozumitelné commity" data-audience="dev all">
+      <div class="eyebrow">Modul 4 · Commit</div>
+      <h2>Commit je pojmenovaný kontrolní bod s popisem.</h2>
+      <div class="grid">
+        <article class="card"><h3>Účel a syntaxe</h3><p>Zaznamená připravený snímek do lokální historie.</p><div class="command"><pre>git commit -m "Zdokumentovat postup nastavení"</pre><button class="copy" type="button" aria-label="Zkopírovat příkaz commit">Kopírovat</button></div><p><code>-m</code> zadá popis přímo v příkazu; bez něj Git otevře nastavený textový editor.</p></article>
+        <article class="card"><h3>Příklad a úskalí</h3><p>Předem: připravte zamýšlené soubory. Poté: nový commit se stane nejnovějším commitem aktuální větve.</p><p>Napište stručný popis záměru změny, například v infinitivu. Vysvětlete, <em>proč</em> je změna důležitá. Vyhněte se vágním popisům jako „aktualizace“ nebo „oprava“.</p><p><strong>Úskalí:</strong> Git ve výchozím nastavení odmítne commit beze změn. Commit zůstává lokální, dokud jej neodešlete.</p></article>
+      </div>
+      <div class="command"><pre>$ git commit -m "Zdokumentovat postup nastavení"
+[main 8c14f2a] Zdokumentovat postup nastavení
+ 1 file changed, 3 insertions(+)</pre><button class="copy" type="button" aria-label="Zkopírovat ukázkový výstup commitu">Kopírovat</button></div>
+      <p class="small muted">Ukázkový výstup: ID commitů a počet souborů se liší. Název větve v hranatých závorkách a krátký hash označují nový lokální commit.</p>
+      <div class="diagram" role="img" aria-label="Commit zaznamená připravený obsah indexu jako nový snímek v lokálním repozitáři.">
+        <div class="node"><strong>Index</strong><span>zkontrolované změny</span></div><span class="arrow" aria-hidden="true">git commit →</span><div class="node"><strong>Lokální historie</strong><span>nový commit</span></div>
+        <p class="diagram-caption">Commit zaznamenává pouze připravený obsah, nikoli všechny upravené soubory.</p>
+      </div>
+      <div class="slide-footer"><span>Dobré commity jsou dost malé na pochopení a dost užitečné na kontrolu</span><span>Modul 4</span></div>
+    </section>
+
+    <section class="slide" data-title="Čtěte historii" data-audience="dev all">
+      <div class="eyebrow">Modul 4 · Prohlížení historie</div>
+      <h2>Historie odpovídá na otázky „co se změnilo?“ a „proč?“</h2>
+      <div class="grid">
+        <article class="card"><h3><code>git log</code> · procházení commitů</h3><p><strong>Účel:</strong> zobrazí historii commitů.</p><p><strong>Syntaxe:</strong> <code>git log [--oneline --graph --decorate]</code></p><p><strong>Příklad:</strong> <code>git log --oneline --graph</code> zobrazí stručný graf.</p><p><strong>Úskalí:</strong> historie standardně sleduje aktuální větev, pokud ji přepínače nebo reference nerozšíří.</p></article>
+        <article class="card"><h3><code>git show</code> · kontrola jednoho commitu</h3><p><strong>Účel:</strong> zobrazí metadata commitu a jeho změny.</p><p><strong>Syntaxe:</strong> <code>git show &lt;commit&gt;</code></p><p><strong>Příklad:</strong> <code>git show HEAD</code> zkontroluje nejnovější commit aktuální větve.</p><p><strong>Přepínače:</strong> <code>--stat</code> zobrazí souhrn. Cíl lze určit ID commitu nebo značkou tag.</p><p><strong>Úskalí:</strong> rozsáhlé změny se mohou zobrazit v prohlížeči výpisu; klávesou <code>q</code> jej ukončíte.</p></article>
+      </div>
+      <div class="command"><pre>$ git log --oneline -1
+8c14f2a Zdokumentovat postup nastavení</pre><button class="copy" type="button" aria-label="Zkopírovat ukázkový výpis historie">Kopírovat</button></div>
+      <p class="small muted">Ukázkový výstup z předchozího příkladu. Konkrétní hash a popis závisí na vašem repozitáři.</p>
+      <div class="callout"><p><strong>Jak kontrolovat:</strong> nejprve projděte popis a souhrn; přesný obsah zjistíte přečtením změn.</p></div>
+      <div class="command"><pre>$ git show --stat --oneline HEAD
+8c14f2a Zdokumentovat postup nastavení
+ README.md | 3 +++
+ 1 file changed, 3 insertions(+)</pre><button class="copy" type="button" aria-label="Zkopírovat ukázkový výstup příkazu git show">Kopírovat</button></div>
+      <div class="slide-footer"><span>Lokální historie je dostupná i bez připojení k síti</span><span>Modul 4</span></div>
+    </section>
+
+    <section class="slide" data-title="Vzdálené repozitáře a synchronizace" data-audience="dev all">
+      <div class="eyebrow">Modul 4 · Sdílení a příjem commitů</div>
+      <h2>Fetch stáhne. Pull stáhne a začlení. Push odešle.</h2>
+      <div class="grid">
+        <article class="card"><h3><code>git remote</code> · správa vzdálených repozitářů</h3><p><strong>Účel:</strong> vypíše nebo spravuje názvy a adresy URL vzdálených repozitářů.</p><p><strong>Syntaxe:</strong> <code>git remote -v</code>; <code>git remote add &lt;name&gt; &lt;url&gt;</code>.</p><p><strong>Příklad:</strong> <code>origin</code> je obvyklý název vzdáleného repozitáře, ze kterého byl klon vytvořen.</p><p><strong>Úskalí:</strong> pojmenovaný remote je nastavení připojení, nikoli druhý pracovní adresář.</p></article>
+        <article class="card"><h3><code>git fetch</code> · stažení referencí</h3><p><strong>Účel:</strong> stáhne vzdálené commity a aktualizuje sledovací reference, aniž by je začlenil do aktuální větve.</p><p><strong>Syntaxe:</strong> <code>git fetch &lt;remote&gt;</code></p><p><strong>Příklad:</strong> proveďte fetch a potom porovnejte historii příkazem <code>git log HEAD..origin/main</code>.</p><p><strong>Úskalí:</strong> samotný fetch neaktualizuje právě načtené soubory.</p></article>
+        <article class="card"><h3><code>git pull</code> · stažení a začlenění</h3><p><strong>Účel:</strong> stáhne změny z určené nebo sledované vzdálené větve a začlení je do aktuální větve pomocí merge nebo rebase podle přepínačů a nastavení.</p><p><strong>Syntaxe:</strong> <code>git pull [--rebase] &lt;remote&gt; &lt;branch&gt;</code></p><p><strong>Příklad:</strong> <code>git pull --rebase origin main</code>.</p><p><strong>Úskalí:</strong> zjistěte, zda tým používá merge, nebo rebase; případné konflikty vyřešte.</p></article>
+        <article class="card"><h3><code>git push</code> · zveřejnění commitů</h3><p><strong>Účel:</strong> odešle lokální commity do vzdálené větve.</p><p><strong>Syntaxe:</strong> <code>git push -u &lt;remote&gt; &lt;branch&gt;</code></p><p><strong>Příklad:</strong> <code>git push -u origin feature/docs</code> nastaví sledování nadřazené větve.</p><p><strong>Úskalí:</strong> push může být odmítnut, pokud se vzdálená historie posunula; místo přepsání práce kolegů změny stáhněte a začleňte.</p></article>
+      </div>
+      <div class="diagram" role="img" aria-label="Fetch stáhne vzdálené commity do lokálních sledovacích referencí. Pull je stáhne a začlení. Push odešle lokální commity do vzdáleného repozitáře.">
+        <div class="node"><strong>Lokální větev</strong><span>vaše commity</span></div><span class="arrow" aria-hidden="true">push →</span><div class="node"><strong>Vzdálený repozitář</strong><span>sdílené commity</span></div><span class="arrow" aria-hidden="true">← fetch</span><div class="node"><strong>Sledovací reference</strong><span>například origin/main</span></div>
+        <p class="diagram-caption">Pull po stažení přidává krok začlenění; nejde pouze o stažení souborů.</p>
+      </div>
+      <div class="command"><pre>$ git remote -v
+origin  https://example.com/team/project.git (fetch)
+origin  https://example.com/team/project.git (push)
+$ git fetch origin
+From https://example.com/team/project
+   a13f1c0..b02a7d1  main -> origin/main
+$ git push -u origin feature/docs
+To https://example.com/team/project.git
+ * [new branch]      feature/docs -> feature/docs
+branch 'feature/docs' set up to track 'origin/feature/docs'.</pre><button class="copy" type="button" aria-label="Zkopírovat ukázkový výstup remote, fetch a push">Kopírovat</button></div>
+      <p class="small muted">Ukázková adresa vzdáleného repozitáře a ID objektů jsou zástupné hodnoty. Úspěšný fetch aktualizuje sledovací reference, nikoli pracovní strom.</p>
+      <p class="small muted">Pokud pull nepřinese žádné nové commity, Git může oznámit <code>Already up to date.</code>; při začlenění rychlým posunem se větev posune bez vytvoření merge commitu.</p>
+      <div class="slide-footer"><span>Chcete-li změny před začleněním zkontrolovat, použijte raději fetch</span><span>Modul 4</span></div>
+    </section>
+
+    <section class="slide" data-title="Větve, merge a rebase" data-audience="dev arch">
+      <div class="eyebrow">Modul 4 · Souběžná práce</div>
+      <h2>Větvením oddělte práci; příkazem merge ji začleňte.</h2>
+      <div class="grid">
+        <article class="card"><h3><code>git branch</code> · výpis nebo vytvoření</h3><p><strong>Syntaxe:</strong> <code>git branch [--all]</code>; <code>git branch &lt;name&gt;</code>. Pomocí <code>-d</code> odstraníte sloučenou lokální větev.</p><p><strong>Úskalí:</strong> vytvořením větve se na ni nepřepnete. Nesloučenou práci nemažte bez rozmyslu.</p></article>
+        <article class="card"><h3><code>git switch</code> · přepnutí mezi větvemi</h3><p><strong>Syntaxe:</strong> <code>git switch &lt;name&gt;</code>; <code>git switch -c &lt;new-name&gt;</code>.</p><p><strong>Příklad:</strong> <code>git switch -c feature/search</code>.</p><p><strong>Úskalí:</strong> Git může přepnutí zablokovat, pokud by se tím přepsaly lokální úpravy.</p></article>
+        <article class="card"><h3><code>git merge</code> · začlenění historie</h3><p><strong>Syntaxe:</strong> <code>git merge &lt;branch&gt;</code>.</p><p>Při rychlém posunu (fast-forward) se pouze posune ukazatel aktuální větve. Při sloučení rozvětvené historie vznikne merge commit se dvěma rodičovskými commity.</p><p><strong>Úskalí:</strong> konflikty vyžadují úpravu souborů, přípravu vyřešených souborů a dokončení merge commitu.</p></article>
+        <article class="card"><h3><code>git rebase</code> · přehrání commitů</h3><p><strong>Syntaxe:</strong> <code>git rebase &lt;base&gt;</code>.</p><p>Znovu přehraje vaše commity nad novým základem a vytvoří lineární posloupnost s novými ID commitů.</p><p><strong>Zlaté pravidlo:</strong> nerebasujte historii, na které už mohou být založeny změny ostatních.</p></article>
+      </div>
+      <div class="command"><pre>$ git branch --list
+* main
+$ git switch -c feature/search
+Switched to a new branch 'feature/search'
+$ git rebase main
+Current branch feature/search is up to date.
+$ git switch main
+Switched to branch 'main'
+$ git merge feature/search
+Already up to date.</pre><button class="copy" type="button" aria-label="Zkopírovat ukázkový výstup branch, switch, merge a rebase">Kopírovat</button></div>
+      <p class="small muted">V tomto příkladu zatím nevznikl nový commit, takže rebase ani merge nemají co začlenit. Praktické cvičení ukazuje rychlý posun po vytvoření nového commitu.</p>
+      <div class="slide-footer"><span>Před přepisováním nebo vynuceným odesláním sdílené historie se zastavte</span><span>Modul 4</span></div>
+    </section>
+
+    <section class="slide" data-title="Stash a tagy" data-audience="dev">
+      <div class="eyebrow">Modul 4 · Odložení práce a označení verzí</div>
+      <h2>Dočasné úpravy odložte pomocí stash. Důležité milníky označte tagem.</h2>
+      <div class="grid">
+        <article class="card"><h3><code>git stash</code> · odložení rozpracované práce</h3><p><strong>Syntaxe:</strong> <code>git stash push -m "popis"</code>; <code>git stash list</code>; <code>git stash pop</code>.</p><p><strong>Příklad:</strong> odložte úpravy, abyste mohli změnit kontext práce, a později je znovu použijte.</p><p><strong>Přepínače:</strong> <code>-u</code> zahrne nesledované soubory. <code>apply</code> ponechá záznam stash; <code>pop</code> jej po úspěšném použití odstraní.</p><p><strong>Úskalí:</strong> záznamy stash jsou lokální a snadno se na ně zapomene; trvalou práci raději commitněte.</p></article>
+        <article class="card"><h3><code>git tag</code> · označení commitu vydání</h3><p><strong>Syntaxe:</strong> <code>git tag -a v1.2.0 -m "Vydání 1.2.0"</code>; seznam zobrazí <code>git tag</code>.</p><p><strong>Účel:</strong> anotované tagy zaznamenávají pojmenovaný milník včetně metadat.</p><p><strong>Zveřejnění:</strong> <code>git push origin v1.2.0</code> (nebo <code>git push --tags</code> pro všechny tagy).</p><p><strong>Úskalí:</strong> běžné odeslání větví tagy automaticky neodešle; dohodněte si pravidla verzování.</p></article>
+      </div>
+      <div class="command"><pre>$ git stash list
+stash@{0}: On main: Rozpracováno: upravit popisky mapy
+$ git tag
+v1.2.0</pre><button class="copy" type="button" aria-label="Zkopírovat ukázkový výstup stash a tagů">Kopírovat</button></div>
+      <div class="slide-footer"><span>Všechny příklady příkazů v tomto modulu jsou bezpečné v cvičném repozitáři</span><span>Modul 4</span></div>
+    </section>
+
+    <section class="slide" id="m5" data-title="5 · Větve a slučování" data-audience="all">
+      <div class="eyebrow">Modul 5 · Větvení a slučování</div>
+      <h2>Větve umožňují týmům pracovat souběžně, aniž by kopírovaly celý projekt.</h2>
+      <p class="lead">Větev začíná jako posuvný název ukazující na commit. Git znovu využívá sdílenou historii; větev je nenákladná a usnadňuje diskusi o oddělené linii práce.</p>
+      <div class="diagram" role="img" aria-label="Větve main a feature mají společného předka. Větev feature se vyvíjí samostatně a její historie se poté začlení do větve main.">
+        <div class="node"><strong>Společný základ</strong><span>společný předek</span></div><span class="arrow" aria-hidden="true">→</span><div class="node"><strong>main</strong><span>stabilní linie</span></div><span class="arrow" aria-hidden="true">↘</span><div class="node"><strong>větev feature</strong><span>oddělené změny</span></div><span class="arrow" aria-hidden="true">↗</span><div class="node"><strong>začlenění</strong><span>merge / kontrola</span></div>
+        <p class="diagram-caption">Oddělení pomáhá organizovat práci, ale neruší potřebu změny začlenit a otestovat.</p>
+      </div>
+      <div class="grid three">
+        <article class="card"><h3>Zaměřte větev na jednu věc</h3><p>Jedna funkce nebo oprava usnadňuje kontrolu i případný návrat změn.</p></article>
+        <article class="card"><h3>Začleňujte pravidelně</h3><p>Krátce žijící větve zmenšují rozdíly mezi souběžnými změnami.</p></article>
+        <article class="card"><h3>Automatizujte kontroly</h3><p>Před začleněním změn do sdílené větve spusťte testy a validaci.</p></article>
+      </div>
+      <div class="slide-footer"><span>Cíl výuky · vysvětlit, proč jsou větve v Gitu nenákladné</span><span>Modul 5</span></div>
+    </section>
+
+    <section class="slide" data-title="Konflikty při slučování" data-audience="all">
+      <div class="eyebrow">Modul 5 · Konflikt je rozhodnutí, nikoli selhání</div>
+      <h2>Konflikt znamená, že Git potřebuje člověka, který určí výslednou podobu změn.</h2>
+      <p>Konflikty obvykle vznikají, když se v obou historiích mění překrývající se řádky nebo když jedna změna přejmenuje či odstraní soubor, který druhá upravuje. Git integraci pozastaví, aby člověk mohl vytvořit zamýšlený výsledek.</p>
+      <div class="grid">
+        <article class="card"><h3>Postup řešení pro vývojáře</h3><ol><li>Pomocí <code>git status</code> zjistěte, které soubory mají konflikt.</li><li>Otevřete každý soubor, porovnejte obě strany a upravte výsledný obsah podle záměru.</li><li>Odstraňte značky konfliktu, spusťte příslušné testy a připravte vyřešené soubory.</li><li>Dokončete merge nebo rebase podle pokynů Gitu.</li></ol></article>
+        <article class="card"><h3>Značky konfliktu</h3><div class="command"><pre>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+verze aktuální větve
+=======
+příchozí verze
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; other-branch</pre><button class="copy" type="button" aria-label="Zkopírovat příklad značek konfliktu">Kopírovat</button></div><p>Značky slouží pouze jako pomůcka, do výsledného obsahu nepatří. Některé nástroje nabízejí vizuální editor pro porovnání obou stran.</p></article>
+      </div>
+      <div class="callout warning"><p>Nevybírejte naslepo možnost „ours“ nebo „theirs“ pro každý konflikt. Ověřte správné chování s autory změn a zkontrolujte společný výsledek.</p></div>
+      <div class="slide-footer"><span>Řešení konfliktu je spolupráce vyjádřená úpravou souboru</span><span>Modul 5</span></div>
+    </section>
+
+    <section class="slide" data-title="Kontrola a začlenění" data-audience="all arch">
+      <div class="eyebrow">Modul 5 · Kontrola před začleněním</div>
+      <h2>Požadavky na začlenění změn (pull/merge requests) zviditelňují integraci.</h2>
+      <div class="grid three">
+        <article class="card"><h3>Navrhnout</h3><p>Popište změnu, připojte souvislosti a uveďte cílovou větev.</p></article>
+        <article class="card"><h3>Zkontrolovat</h3><p>Před schválením prodiskutujte návrh, výsledky testů, bezpečnost a udržovatelnost.</p></article>
+        <article class="card"><h3>Začlenit</h3><p>Požadované kontroly projdou a oprávněná osoba změnu začlení podle týmových pravidel.</p></article>
+      </div>
+      <div class="table-wrap"><table><thead><tr><th>Způsob začlenění</th><th>Výsledná historie</th><th>Vhodné, když</th></tr></thead><tbody>
+        <tr><td>Rychlý posun (fast-forward)</td><td>Posune ukazatel cíle; nevznikne merge commit</td><td>Cílová větev nemá vlastní nové commity</td></tr>
+        <tr><td>Slučovací commit (merge commit)</td><td>Zachová spojení větví i oba rodičovské commity</td><td>Je užitečné zachovat kontext větve</td></tr>
+        <tr><td>Sloučení do jednoho commitu (squash merge)</td><td>Vytvoří jeden nový cílový commit ze změn větve</td><td>Preferujete čistou a stručnou cílovou historii</td></tr>
+        <tr><td>Rebase a merge</td><td>Znovu přehraje commity větve nad cílem</td><td>Preferujete lineární historii a pravidla dovolují její přepis</td></tr>
+      </tbody></table></div>
+      <div class="slide-footer"><span>Názvy metod a jejich přesné chování se liší podle hostovací platformy</span><span>Modul 5</span></div>
+    </section>
+
+    <section class="slide" id="m6" data-title="6 · Týmové postupy" data-audience="pm arch">
+      <div class="eyebrow">Modul 6 · Týmové postupy spolupráce</div>
+      <h2>Správný postup odpovídá způsobu, jakým vydáváte software.</h2>
+      <p class="lead">Neexistuje jeden nejlepší model větvení pro všechny. Přizpůsobte jej četnosti integrace, způsobu přípravy vydání a míře koordinace, kterou váš tým zvládne.</p>
+      <div class="table-wrap"><table><thead><tr><th>Postup</th><th>Typické uspořádání</th><th>Vhodné pro</th><th>Kompromis</th></tr></thead><tbody>
+        <tr><td>Centralizovaný</td><td>Všichni začleňují změny do jedné sdílené větve</td><td>Malé týmy a jednoduché vydávání</td><td>Souběžné změny vyžadují koordinaci</td></tr>
+        <tr><td>Větve funkcí</td><td>Krátké tematické větve se před sloučením kontrolují</td><td>Týmy požadující vzájemnou kontrolu a testy</td><td>Dlouho žijící větve se rozcházejí a kolidují</td></tr>
+        <tr><td>Gitflow</td><td>Dlouho žijící větve main/develop a větve pro vydání a rychlé opravy</td><td>Plánovaná vydání a souběžná údržba</td><td>Více formalit a správy větví</td></tr>
+        <tr><td>GitHub Flow</td><td>Krátká větev → kontrola → nasaditelná větev main</td><td>Průběžné doručování a časté nasazování</td><td>Vyžaduje spolehlivé testy a disciplínu při vydávání</td></tr>
+        <tr><td>Vývoj založený na hlavní větvi (trunk-based)</td><td>Časté malé integrace do hlavní větve; krátké vedlejší větve</td><td>Týmy se silnou automatizací a přepínači funkcí (feature flags)</td><td>Vyžaduje disciplínu a rychlou zpětnou vazbu</td></tr>
+      </tbody></table></div>
+      <div class="slide-footer"><span>Cíl výuky · porovnat postupy s omezeními týmu</span><span>Modul 6</span></div>
+    </section>
+
+    <section class="slide" data-title="Uspořádání repozitářů a správa" data-audience="arch">
+      <div class="eyebrow">Modul 6 · Architektura a správa</div>
+      <h2>Volba mezi monorepozitářem a více repozitáři závisí na vlastnictví a nástrojích.</h2>
+      <div class="grid">
+        <article class="card"><h3>Jeden repozitář (monorepo)</h3><p><strong>Výhody:</strong> atomické změny napříč projekty, sdílené nástroje a snadno dohledatelný kód.</p><p><strong>Náklady:</strong> škálování CI a oprávnění, pravidla pro celý repozitář a rozsáhlá historie při klonování.</p></article>
+        <article class="card"><h3>Více repozitářů (multi-repo)</h3><p><strong>Výhody:</strong> nezávislé vlastnictví, řízení přístupu a četnost vydávání.</p><p><strong>Náklady:</strong> koordinace změn napříč repozitáři, duplicitní nástroje a správa verzí závislostí.</p></article>
+      </div>
+      <div class="grid three">
+        <article class="card"><h3>Chraňte větve</h3><p>Podle potřeby vyžadujte kontrolu změn, úspěšné testy a omezte přímé odesílání.</p></article>
+        <article class="card"><h3>Vyjasněte vlastnictví</h3><p>Pro kritické komponenty používejte CODEOWNERS nebo obdobné směrování kontrol.</p></article>
+        <article class="card"><h3>Automatizujte dohledatelnost</h3><p>Jednotnými pravidly propojte změny s evidovanými úkoly, sestaveními, artefakty a vydáními.</p></article>
+      </div>
+      <div class="slide-footer"><span>Hranice repozitářů mají odpovídat skutečnému vlastnictví, nikoli módě</span><span>Modul 6</span></div>
+    </section>
+
+    <section class="slide" data-title="CI, vydávání a verzování" data-audience="pm arch">
+      <div class="eyebrow">Modul 6 · Od commitu k vydání</div>
+      <h2>Proces vydání propojuje zkontrolovaný zdrojový kód s dohledatelným artefaktem.</h2>
+      <div class="diagram" role="img" aria-label="Úkol a změna projdou kontrolou, CI sestaví a otestuje commit, verzovací tag označí vydání a artefakt se zveřejní.">
+        <div class="node"><strong>Úkol / změna</strong><span>záměr</span></div><span class="arrow" aria-hidden="true">→</span><div class="node"><strong>Commit a kontrola</strong><span>historie zdrojového kódu</span></div><span class="arrow" aria-hidden="true">→</span><div class="node"><strong>Kontroly CI</strong><span>sestavení + testy</span></div><span class="arrow" aria-hidden="true">→</span><div class="node"><strong>Tag + artefakt</strong><span>vydání</span></div>
+      </div>
+      <div class="grid">
+        <article class="card"><h3>Sémantické verzování (SemVer)</h3><p><code>MAJOR.MINOR.PATCH</code>: označuje nekompatibilní změny API, zpětně kompatibilní funkce a zpětně kompatibilní opravy (u stabilních veřejných API).</p></article>
+        <article class="card"><h3>Conventional Commits</h3><p>Společná konvence popisů commitů může automatizovat changelogy a rozhodování o verzích; jde o týmové pravidlo, nikoli požadavek Gitu.</p></article>
+      </div>
+      <div class="callout"><p>Tag Gitu pojmenovává commit. Platforma pro vydávání k němu může připojit poznámky a soubory; samotný tag není nasazený produkt ani neměnný artefakt.</p></div>
+      <div class="slide-footer"><span>Hlavní poznatek · dohledatelnost vyžaduje promyšlený postup</span><span>Modul 6</span></div>
+    </section>
+
+    <section class="slide" id="m7" data-title="7 · Vrácení změn a obnova" data-audience="dev">
+      <div class="eyebrow">Modul 7 · Vrácení změn a obnova</div>
+      <h2>Příkaz pro vrácení změny zvolte podle toho, kde se změna nachází.</h2>
+      <div class="table-wrap"><table><thead><tr><th>Situace</th><th>Příkaz</th><th>Účinek</th></tr></thead><tbody>
+        <tr><td>Zahodit nepřipravené úpravy v cestě</td><td><code>git restore &lt;path&gt;</code></td><td>Nahradí soubor v pracovním stromu verzí z indexu. Úpravy tím zahodí.</td></tr>
+        <tr><td>Zrušit přípravu souboru, ponechat úpravy</td><td><code>git restore --staged &lt;path&gt;</code></td><td>Vrátí položku indexu na HEAD; úpravy v pracovním stromu zůstanou.</td></tr>
+        <tr><td>Bezpečně vrátit zveřejněný commit</td><td><code>git revert &lt;commit&gt;</code></td><td>Přidá nový commit, který zvolenou změnu obrátí.</td></tr>
+        <tr><td>Upravit poslední lokální commit</td><td><code>git commit --amend</code></td><td>Nahradí poslední commit a změní jeho ID.</td></tr>
+      </tbody></table></div>
+      <div class="callout warning"><p><code>git restore &lt;path&gt;</code> přepíše necommitované změny souboru. Nejprve je zkontrolujte pomocí <code>git diff</code>. Nepoužívejte jej bez rozmyslu jako tlačítko „zpět“.</p></div>
+      <div class="slide-footer"><span>Cíl výuky · bezpečně zvolit příkaz pro vrácení změn</span><span>Modul 7</span></div>
+    </section>
+
+    <section class="slide" data-title="Reset: posuňte větev, změňte index" data-audience="dev">
+      <div class="eyebrow">Modul 7 · Reset používejte opatrně</div>
+      <h2><code>git reset</code> přesune aktuální větev na zvolený commit.</h2>
+      <div class="table-wrap"><table><thead><tr><th>Režim</th><th>Větev / HEAD</th><th>Index</th><th>Pracovní strom</th><th>Použití</th></tr></thead><tbody>
+        <tr><td><code>--soft</code></td><td>Posune</td><td>Zachován</td><td>Zachován</td><td>Opakovat commit a ponechat připravené změny</td></tr>
+        <tr><td><code>--mixed</code> (výchozí)</td><td>Posune</td><td>Resetován</td><td>Zachován</td><td>Zrušit commit, ale ponechat úpravy nepřipravené</td></tr>
+        <tr><td><code>--hard</code></td><td>Posune</td><td>Resetován</td><td>Resetován</td><td>Destruktivní: zahodí sledované změny v pracovním stromu</td></tr>
+      </tbody></table></div>
+      <div class="command"><pre>git reset --soft HEAD~1
+git reset --mixed HEAD~1</pre><button class="copy" type="button" aria-label="Zkopírovat příklady příkazu reset">Kopírovat</button></div>
+      <div class="callout warning"><p><strong>Nepoužívejte <code>git reset --hard</code> jako obecný příkaz k úklidu.</strong> Zahodí sledované nepřipravené i připravené změny. Může přepsat nebo odstranit i nesledované soubory či adresáře, které překážejí obnovení sledovaných cest. Sdílenou historii nikdy neresetujte bez koordinace.</p></div>
+      <div class="slide-footer"><span>Před resetem: zkontrolujte stav, uložte práci a ověřte cílový commit</span><span>Modul 7</span></div>
+    </section>
+
+    <section class="slide" id="m8" data-title="8 · Dobré návyky" data-audience="all">
+      <div class="eyebrow">Modul 8 · Osvědčené postupy</div>
+      <h2>Vytvářejte historii užitečnou pro dalšího člověka.</h2>
+      <div class="grid three">
+        <article class="card"><h3>Commitujte často</h3><p>Malé, samostatné změny se snáze vysvětlují, kontrolují, testují i vracejí.</p></article>
+        <article class="card"><h3>Pište výstižné popisy</h3><p>Popište záměr a dopad, nejen technické provedení.</p></article>
+        <article class="card"><h3>Před sdílením kontrolujte</h3><p>Zkontrolujte připravené rozdíly, stav, testy a generované soubory.</p></article>
+        <article class="card"><h3>Začleňujte včas</h3><p>Krátké cykly zpětné vazby omezují rozcházení větví a nečekané konflikty.</p></article>
+        <article class="card"><h3>Chraňte přihlašovací údaje</h3><p>Používejte skenování tajných údajů a schválené úložiště; tajné údaje nikdy necommitujte.</p></article>
+        <article class="card"><h3>Dokumentujte postup</h3><p>Zpřístupněte pravidla pro vydávání, kontrolu, vlastnictví a obnovu.</p></article>
+      </div>
+      <div class="slide-footer"><span>Dobrá historie je nástrojem spolupráce</span><span>Modul 8</span></div>
+    </section>
+
+    <section class="slide" data-title="Chraňte tajné údaje a velké soubory" data-audience="dev arch">
+      <div class="eyebrow">Modul 8 · Chraňte to, co sdílíte</div>
+      <h2>Prevence je jednodušší než čištění zveřejněné historie.</h2>
+      <div class="grid">
+        <article class="card"><h3>Nikdy necommitujte tajné údaje</h3><p>Ukládejte přihlašovací údaje ve schválených správcích tajných údajů. Pokud uniknou, ihned je zneplatněte nebo obměňte — i když commit později odstraníte.</p><p>Zapněte skenování tajných údajů na platformě a zkontrolujte přístupy k dotčeným systémům.</p></article>
+        <article class="card"><h3>S velkými soubory zacházejte uvážlivě</h3><p>Git ukládá snímky; časté změny velkých binárních souborů mohou zvětšit historii repozitáře. Git LFS uchovává v Gitu ukazatele a obsah souborů v odděleném úložišti.</p><p>Před zavedením LFS ověřte kvóty, dobu uchovávání, přístupy a pravidla zálohování.</p></article>
+      </div>
+      <div class="grid">
+        <article class="card"><h3>Zabezpečte postup</h3><p>Minimální oprávnění, chráněné větve, povinná kontrola a podepsané commity či tagy posilují důvěryhodnost původu.</p></article>
+        <article class="card"><h3>Nevhodným postupům se vyhněte</h3><p>Rozsáhlým nesouvisejícím commitům, vynucenému odesílání do sdílených větví, dlouho neintegrovaným větvím a bezmyšlenkovitému commitování generovaných výstupů.</p></article>
+      </div>
+      <div class="callout warning"><p>Odstranění souboru s tajným údajem v pozdějším commitu nevymaže starší kopie z historie ani klonů. Nejprve údaj obměňte; poté postupujte podle pravidel pro incidenty a čištění repozitáře.</p></div>
+      <div class="slide-footer"><span>Bezpečnost je otázkou pravidel repozitáře i týmové praxe</span><span>Modul 8</span></div>
+    </section>
+
+    <section class="slide" id="lab" data-title="Cvičení pro vývojáře · Vytvoření repozitáře" data-audience="dev">
+      <div class="eyebrow">Praktické cvičení pro vývojáře · Část 1</div>
+      <h2>Vytvořte malý repozitář a zaznamenejte změnu.</h2>
+      <p>Tyto kroky proveďte v novém, dočasném adresáři. Identita Gitu už musí být nastavena. Níže uvedené příkazy fungují v prostředí Git Bash, v macOS Terminalu i linuxovém shellu.</p>
+      <div class="command"><pre>mkdir git-practice
+cd git-practice
+git init
+printf "# Poznámky z výletu\nPrvní návrh.\n" &gt; README.md
+git status
+git add README.md
+git diff --staged
+git commit -m "Přidat poznámky z výletu"
+git log --oneline</pre><button class="copy" type="button" aria-label="Zkopírovat první kroky cvičení">Kopírovat</button></div>
+      <div class="callout"><p>Ve Windows PowerShell vytvořte soubor příkazem <code>Set-Content -Encoding utf8 README.md "# Poznámky z výletu`nPrvní návrh."</code> místo příkazu <code>printf</code>. Výslovné kódování UTF-8 zachová české znaky i ve Windows PowerShell 5.1.</p></div>
+      <ul class="checklist"><li><code>git status</code> zobrazil nesledovaný soubor</li><li>Připravený diff zobrazil zamýšlený text</li><li>Commit se objevil ve výpisu <code>git log</code></li><li>Repozitář je lokální; nic nebylo zveřejněno</li></ul>
+      <div class="slide-footer"><span>Kontrolní bod cvičení 1 · lokální historie</span><span>Modul 3 + 4</span></div>
+    </section>
+
+    <section class="slide" data-title="Cvičení pro vývojáře · Větev a merge" data-audience="dev">
+      <div class="eyebrow">Praktické cvičení pro vývojáře · Část 2</div>
+      <h2>Proveďte souběžné změny a poté je začleňte.</h2>
+      <div class="command"><pre>git switch -c feature/add-route
+printf "\nTrasa: Pine Loop\n" &gt;&gt; README.md
+git add README.md
+git commit -m "Přidat trasu Pine Loop"
+git switch main
+git merge feature/add-route
+git log --oneline --graph --decorate</pre><button class="copy" type="button" aria-label="Zkopírovat cvičení pro větev a merge">Kopírovat</button></div>
+      <p class="small muted">Pokud <code>git init</code> zvolil jinou větev než <code>main</code>, zjistěte aktuální větev příkazem <code>git branch --show-current</code> a ve výše uvedených příkazech nahraďte <code>main</code> jejím názvem.</p>
+      <p class="small muted">Ve Windows PowerShell nahraďte řádek s <code>printf</code> příkazem <code>Add-Content -Encoding utf8 README.md "`nTrasa: Pine Loop"</code>.</p>
+      <div class="grid">
+        <article class="card"><h3>Pozorujte</h3><p>Nová větev začíná od prvního commitu. Pokud cílová větev nemá vlastní nové commity, lze commit z nové větve začlenit rychlým posunem.</p></article>
+        <article class="card"><h3>Diskutujte</h3><p>Jak by požadavek na začlenění změny přidal před tímto sloučením kontrolu a automatické testy?</p></article>
+      </div>
+      <div class="slide-footer"><span>Kontrolní bod cvičení 2 · začlenění zaměřené větve</span><span>Modul 5</span></div>
+    </section>
+
+    <section class="slide" id="cheat" data-title="Přehled příkazů" data-audience="dev">
+      <div class="eyebrow">Příručka · Přehled příkazů na jedné obrazovce</div>
+      <h2>Každodenní Git v kostce.</h2>
+      <div class="table-wrap"><table><thead><tr><th>Cíl</th><th>Příkaz</th><th>Připomenutí</th></tr></thead><tbody>
+        <tr><td>Zkontrolovat stav / rozdíl v pracovním stromu / připravený rozdíl</td><td><code>git status</code><br><code>git diff</code><br><code>git diff --staged</code></td><td>Před commitem zkontrolujte připravený obsah</td></tr>
+        <tr><td>Připravit / vytvořit commit</td><td><code>git add &lt;path&gt;</code><br><code>git commit -m "popis"</code></td><td>Commit obsahuje připravený obsah</td></tr>
+        <tr><td>Prohlížet historii</td><td><code>git log --oneline --graph</code><br><code>git show HEAD</code></td><td>Lokální operace fungují bez připojení</td></tr>
+        <tr><td>Větvit / přepnout / sloučit</td><td><code>git switch -c &lt;name&gt;</code><br><code>git merge &lt;branch&gt;</code></td><td>Zaměřte práci a začleňujte včas</td></tr>
+        <tr><td>Přijmout / zveřejnit</td><td><code>git fetch origin</code><br><code>git pull --rebase</code><br><code>git push -u origin &lt;branch&gt;</code></td><td>Pull stáhne a začlení změny; dodržujte týmová pravidla</td></tr>
+        <tr><td>Vrátit změny / obnovit</td><td><code>git restore --staged &lt;path&gt;</code><br><code>git revert &lt;commit&gt;</code><br><code>git reflog</code></td><td>Nejprve kontrolujte; na cennou práci nepoužívejte destruktivní příkazy</td></tr>
+        <tr><td>Vydání / dočasná práce</td><td><code>git tag -a v1.0.0 -m "Vydání"</code><br><code>git stash push -m "popis"</code></td><td>Tagy je nutné odeslat; stash je lokální</td></tr>
+      </tbody></table></div>
+      <div class="slide-footer"><span>Vytisknutím prezentace získáte přenosnou příručku</span><span>Příručka</span></div>
+    </section>
+
+    <section class="slide" id="glossary" data-title="Slovníček" data-audience="all">
+      <div class="eyebrow">Příručka · Společné pojmy</div>
+      <h2>Pojmy pro přesnou komunikaci o Gitu.</h2>
+      <div class="table-wrap"><table><thead><tr><th>Pojem</th><th>Vysvětlení jednoduchými slovy</th></tr></thead><tbody>
+        <tr><td>Větev (branch)</td><td>Posuvný název pro linii commitů.</td></tr><tr><td>Klon (clone)</td><td>Lokální repozitář zkopírovaný z jiného repozitáře.</td></tr>
+        <tr><td>Commit (revize)</td><td>Zaznamenaný snímek projektu s metadaty a předky.</td></tr><tr><td>Konflikt (conflict)</td><td>Změna, kterou Git nedokáže automaticky spojit bez lidského rozhodnutí.</td></tr>
+        <tr><td>HEAD</td><td>Odkaz na aktuální větev; při odpojené HEAD přímo na načtený commit.</td></tr><tr><td>Index (oblast přípravy)</td><td>Oblast přípravy, která určuje obsah příštího commitu.</td></tr>
+        <tr><td>Sloučení (merge)</td><td>Začlenění spojující historie, často se zachováním obou předchozích linií.</td></tr><tr><td><code>origin</code></td><td>Obvyklý název vzdáleného repozitáře, ze kterého byl repozitář naklonován.</td></tr>
+        <tr><td>Přeskládání (rebase)</td><td>Opětovné přehrání commitů nad jiným základem, při kterém vzniknou nová ID commitů.</td></tr><tr><td>Vzdálený repozitář (remote)</td><td>Pojmenované připojení k jinému repozitáři Gitu.</td></tr>
+        <tr><td>Příprava změn (staging)</td><td>Výběr obsahu souborů pro příští commit.</td></tr><tr><td>Značka (tag)</td><td>Pojmenovaný odkaz na commit, často označující vydání.</td></tr>
+        <tr><td>Pracovní strom (working tree)</td><td>Soubory právě načtené pro prohlížení a úpravy.</td></tr>
+      </tbody></table></div>
+      <div class="slide-footer"><span>Používejte stejné pojmy napříč rolemi</span><span>Příručka</span></div>
+    </section>
+
+    <section class="slide" id="faq" data-title="Časté dotazy a další četba" data-audience="all">
+      <div class="eyebrow">Příručka · Časté dotazy a další četba</div>
+      <h2>Běžné otázky a stručné odpovědi.</h2>
+      <details><summary>Je Git zálohovací nástroj?</summary><p>Sám o sobě ne. Lokální repozitář je pouze jedna kopie; důležitou práci zálohujte a hostujte podle schválených pravidel.</p></details>
+      <details><summary>Odesílá se každý commit na GitHub?</summary><p>Ne. Commity zůstávají lokální, dokud je neodešlete do vzdáleného repozitáře. Lokální commity můžete vytvářet a kontrolovat i bez připojení.</p></details>
+      <details><summary>Měli bychom vždy používat rebase?</summary><p>Ne. Dodržujte týmovou konvenci. Rebase může vytvořit lineární historii, ale mění ID commitů; sdílenou historii nepřepisujte.</p></details>
+      <details><summary>Proč vznikne konflikt při slučování?</summary><p>Git nedokáže určit zamýšlený výsledek překrývajících se úprav nebo neslučitelných operací se soubory. Člověk musí výslednou změnu vyřešit a ověřit.</p></details>
+      <details><summary>Lze obnovit odstraněnou větev?</summary><p>Často ano, pokud je její commit stále dostupný v lokálním reflogu. Nejprve jej zkontrolujte a pak vytvořte záchrannou větev. Záznamy reflogu jsou lokální a časem expirují.</p></details>
+      <div class="grid">
+        <article class="card"><h3>Učte se dál</h3><ul><li><a href="https://git-scm.com/book/cs/v2" rel="noreferrer">Kniha Pro Git česky</a></li><li><a href="https://git-scm.com/docs" rel="noreferrer">Oficiální dokumentace Gitu (anglicky)</a></li><li><a href="https://git-scm.com/docs/gittutorial" rel="noreferrer">Výukový kurz Gitu (anglicky)</a></li></ul></article>
+        <article class="card"><h3>Pokračujte dál</h3><p>Zopakujte si cvičení bez nápovědy příkazů a potom přizpůsobte diskusi o pracovních postupech četnosti vydávání, rizikům a modelu vlastnictví svého týmu.</p></article>
+      </div>
+      <div class="slide-footer"><span>Konec kurzu · pokračujte v bezpečném cvičném repozitáři</span><span>Děkujeme</span></div>
+    </section>
+  </main>
+
+  <footer class="controls" aria-label="Navigace mezi snímky">
+    <span class="bottom-hint">← → navigace · Home / End skok na začátek či konec · Esc zavře obsah</span>
+    <button class="nav-button" id="previous" type="button" aria-label="Předchozí snímek">←</button>
+    <span class="counter"><span id="current-slide">1</span> / <span id="slide-total">1</span></span>
+    <button class="nav-button" id="next" type="button" aria-label="Další snímek">→</button>
+  </footer>
+</body>
+</html>

@@ -4,7 +4,9 @@ A practical, visual introduction to Git for project managers, architects, and de
 
 ## Start the course
 
-Open [`index.html`](index.html) in a modern browser, or publish the repository root with GitHub Pages. Use the on-screen arrows or the left/right arrow keys to navigate. The **Track** selector focuses the deck on PM, Architect, or Developer content. Use **Contents** to jump to a section, **Copy** buttons for commands, and browser print to save or print slides.
+Open [`index.html`](index.html) in a modern browser, or publish the repository root with GitHub Pages. Choose **English** or **Čeština** in the top bar; changing language keeps the current slide. The complete [Czech edition](index.cs.html) also opens directly, with no build step or network connection required. Use the on-screen arrows or the left/right arrow keys to navigate, **Contents** to jump to a section, **Copy** buttons for commands, and browser print to save or print slides in the selected language.
+
+The Czech edition translates every slide, diagram label, command explanation, glossary entry, and navigation control. Git command names, flags, branch names, paths, and syntax placeholders stay unchanged; sample commit messages and lab text are localized. Illustrative Git output remains in English, with Czech explanations.
 
 ## Course contents
 
@@ -14,10 +16,11 @@ The deck covers the eight modules in [SPECIFICATION.md](SPECIFICATION.md), with 
 
 ```text
 /
-├── index.html       # Complete course slide deck
+├── index.html       # Complete English course slide deck
+├── index.cs.html    # Complete Czech course slide deck
 ├── assets/
 │   ├── deck.css     # Responsive, accessible presentation styles
-│   ├── deck.js      # Slide navigation, track filters, and copy controls
+│   ├── deck.js      # Shared navigation, language links, and localized copy controls
 │   └── favicon.svg  # Deck icon
 ├── README.md
 └── SPECIFICATION.md
@@ -26,3 +29,5 @@ The deck covers the eight modules in [SPECIFICATION.md](SPECIFICATION.md), with 
 ## Contributing
 
 Keep examples safe to run in a practice repository, use the role labels `[All]`, `[PM]`, `[Architect]`, and `[Dev]`, and retain keyboard navigation, reduced-motion support, and print styles when editing the deck.
+
+Keep both language editions in the same slide order, with matching slide IDs, command syntax, and examples. Translate explanatory text and accessibility labels, but not Git keywords or literal output from Git. Use consistent Czech terms: *pracovní strom* (working tree), *oblast přípravy / index* (staging area), *větev* (branch), *sloučení* (merge), *přeskládání* (rebase), and *značka* (tag).
